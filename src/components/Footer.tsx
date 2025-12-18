@@ -30,22 +30,19 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="py-24 px-4 bg-slate-950 border-t border-white/5 relative overflow-hidden">
+    <footer className="py-16 px-4 bg-slate-950 border-t border-white/5 relative overflow-hidden">
       {/* Background glow */}
-      <div className="absolute bottom-0 right-0 w-[520px] h-[520px] bg-purple-600/10 blur-[160px] rounded-full animate-pulse"></div>
-      <div className="absolute top-0 left-0 w-[420px] h-[420px] bg-cyan-500/5 blur-[120px] rounded-full animate-float-slow"></div>
-
-      {/* Rail glow edges */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+      <div className="absolute bottom-0 right-0 w-[320px] h-[320px] bg-purple-600/10 blur-[120px] rounded-full animate-pulse" />
+      <div className="absolute top-0 left-0 w-[280px] h-[280px] bg-cyan-500/5 blur-[100px] rounded-full animate-float-slow" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Top grid */}
-        <div className="grid lg:grid-cols-4 gap-16 mb-24">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-16">
           {/* Brand + socials + status */}
-          <div className="lg:col-span-2">
+          <div className="sm:col-span-2">
             <div className="flex items-center gap-3 mb-6">
               <div className="relative">
-                <div className="absolute -inset-1 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 blur opacity-50"></div>
+                <div className="absolute -inset-1 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 blur opacity-50" />
                 <div className="relative w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center border border-white/10">
                   <Orbit className="w-6 h-6 text-white" />
                 </div>
@@ -55,14 +52,14 @@ const Footer: React.FC = () => {
               </span>
             </div>
 
-            <p className="text-slate-500 max-w-sm mb-8 leading-relaxed font-light text-lg">
+            <p className="text-slate-500 max-w-sm mb-8 leading-relaxed font-light text-base">
               A global universe dedicated to the decentralization of value. We believe the future belongs to those who
               trade mastery for growth.
             </p>
 
             {/* Status + socials */}
-            <div className="flex items-center gap-6 mb-8">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-6 mb-8">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 w-fit">
                 <Activity className={`w-4 h-4 ${protocolOnline ? 'text-cyan-400' : 'text-pink-400'}`} />
                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-300">
                   {protocolOnline ? 'Protocol: Online' : 'Protocol: Offline'}
@@ -90,7 +87,7 @@ const Footer: React.FC = () => {
 
             {/* Newsletter */}
             <form
-              className="flex items-center gap-3 max-w-md"
+              className="flex flex-col sm:flex-row gap-3 max-w-md"
               onSubmit={(e) => {
                 e.preventDefault();
                 // Integrate with your newsletter API here
@@ -109,18 +106,15 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Navigation */}
-          <div className="grid grid-cols-2 gap-8 lg:col-span-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:col-span-2">
             <div>
-              <h5 className="text-white font-bold mb-8 font-grotesk uppercase tracking-[0.2em] text-xs relative">
+              <h5 className="text-white font-bold mb-6 font-grotesk uppercase tracking-[0.2em] text-xs relative">
                 Universe
-                <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-500"></span>
+                <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-500" />
               </h5>
-              <ul className="space-y-5 text-slate-500 text-sm font-light">
+              <ul className="space-y-4 text-slate-500 text-sm font-light">
                 <li>
-                  <button
-                    onClick={() => scrollToId('barter-engine')}
-                    className="hover:text-cyan-400 transition-colors"
-                  >
+                  <button onClick={() => scrollToId('barter-engine')} className="hover:text-cyan-400 transition-colors">
                     Vortex Engine
                   </button>
                 </li>
@@ -143,11 +137,11 @@ const Footer: React.FC = () => {
             </div>
 
             <div>
-              <h5 className="text-white font-bold mb-8 font-grotesk uppercase tracking-[0.2em] text-xs relative">
+              <h5 className="text-white font-bold mb-6 font-grotesk uppercase tracking-[0.2em] text-xs relative">
                 Solutions
-                <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500"></span>
+                <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500" />
               </h5>
-              <ul className="space-y-5 text-slate-500 text-sm font-light">
+              <ul className="space-y-4 text-slate-500 text-sm font-light">
                 <li>
                   <button onClick={() => scrollToId('sectors')} className="hover:text-cyan-400 transition-colors">
                     PropTech Lab
@@ -189,7 +183,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom bar */}
-        <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
           <div className="flex items-center gap-2 text-slate-600 text-xs tracking-widest uppercase font-bold">
             <Globe className="w-4 h-4" />
             BARTERVERSE PROTOCOL V2.5.0
@@ -197,7 +191,7 @@ const Footer: React.FC = () => {
           <p className="text-slate-600 text-xs tracking-widest uppercase font-bold">
             © {new Date().getFullYear()} BARTERVERSE ECOSYSTEM
           </p>
-          <div className="flex gap-10 text-[10px] text-slate-600 font-bold uppercase tracking-[0.2em]">
+          <div className="flex gap-6 text-[10px] text-slate-600 font-bold uppercase tracking-[0.2em]">
             <a href="#" className="hover:text-white transition-colors">
               Privacy.sys
             </a>
@@ -213,7 +207,7 @@ const Footer: React.FC = () => {
         <button
           onClick={scrollToTop}
           aria-label="Back to top"
-          className="fixed bottom-8 right-8 w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-white hover:border-cyan-400 hover:text-cyan-400 hover:shadow-[0_0_25px_rgba(34,211,238,0.4)] transition-all flex items-center justify-center backdrop-blur-md"
+          className="fixed bottom-6 right-6 w-12 h-12 rounded-2xl bg-white/5 border border-white/10 text-white hover:border-cyan-400 hover:text-cyan-400 hover:shadow-[0_0_25px_rgba(34,211,238,0.4)] transition-all flex items-center justify-center backdrop-blur-md"
         >
           <ChevronUp className="w-6 h-6" />
         </button>
