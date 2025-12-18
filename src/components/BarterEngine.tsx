@@ -8,6 +8,10 @@ import {
   Zap,
   Target,
   Search,
+  Layers,
+  BadgeInfo,
+  Sparkles,
+  AlertTriangle,
 } from 'lucide-react';
 import { getBarterAdvice } from '../services/geminiService';
 import type { BarterMatchResult } from '../../types';
@@ -37,7 +41,7 @@ const BarterEngine: React.FC = () => {
     }
   };
 
-    return (
+  return (
     <section id="barter-engine" className="py-16 sm:py-24 px-4 relative">
       <div className="max-w-6xl mx-auto">
         <div className="relative group">
@@ -144,30 +148,58 @@ const BarterEngine: React.FC = () => {
               {result && (
                 <div className="mt-12 sm:mt-16 md:mt-20 p-6 sm:p-8 md:p-12 rounded-[1.5rem] sm:rounded-[3rem] bg-slate-950/80 border border-white/10 animate-in fade-in slide-in-from-bottom-10 duration-700">
                   {/* Header row */}
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 sm:mb-12 gap-6 sm:gap-8">
-                  {/* Left block */}
-                  <div>
-                    <div className="text-[10px] sm:text-[11px] font-black text-cyan-400 uppercase tracking-[0.3em] mb-2">
-                      Analysis Result
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-8 sm:mb-12 gap-6 sm:gap-8">
+                    {/* Left block */}
+                    <div>
+                      <div className="text-[10px] sm:text-[11px] font-black text-cyan-400 uppercase tracking-[0.3em] mb-2">
+                        Analysis Result
+                      </div>
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-grotesk tracking-tight uppercase">
+                        Protocol: Value-Match
+                      </h3>
                     </div>
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-grotesk tracking-tight uppercase">
-                      Protocol: Value-Match
-                    </h3>
-                  </div>
 
-                  {/* Right block (pill) */}
-                  <div className="flex items-center gap-2 sm:gap-3 md:gap-4 px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full bg-cyan-500/5 border border-cyan-500/20">
-                    <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 flex-shrink-0" />
-                    <span className="text-cyan-400 text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider">
-                      {result.estimatedValue ?? 'N/A'}
-                    </span>
+                    {/* Right block (pill) */}
+                    <div className="flex items-center gap-2 sm:gap-3 md:gap-4 px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full bg-cyan-500/5 border border-cyan-500/20">
+                      <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 flex-shrink-0" />
+                      <span className="text-cyan-400 text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider">
+                        {result.estimatedValue ?? 'N/A'}
+                      </span>
+                    </div>
                   </div>
-                </div>
 
                   {/* Strategy */}
                   <p className="text-slate-300 text-lg sm:text-xl md:text-2xl leading-relaxed mb-10 sm:mb-12 md:mb-16 font-light italic">
                     "{result.exchangeStrategy ?? 'No strategy returned'}"
                   </p>
+
+                  {/* Optional meta badges (render only if available) */}
+                  {(result.skillCategory || result.skillLevelMatch) && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-10 sm:mb-12">
+                      {result.skillCategory && (
+                        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10">
+                          <Layers className="w-5 h-5 text-cyan-400" />
+                          <div className="text-slate-300 text-sm">
+                            <span className="text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black block mb-1">
+                              Skill category
+                            </span>
+                            {result.skillCategory}
+                          </div>
+                        </div>
+                      )}
+                      {result.skillLevelMatch && (
+                        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10">
+                          <BadgeInfo className="w-5 h-5 text-purple-400" />
+                          <div className="text-slate-300 text-sm">
+                            <span className="text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black block mb-1">
+                              Level match
+                            </span>
+                            {result.skillLevelMatch}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
                     {/* Milestones */}
@@ -196,8 +228,9 @@ const BarterEngine: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Duration + action */}
+                    {/* Duration + action (+ optional complementary & risks/impact) */}
                     <div className="space-y-6 sm:space-y-8 md:space-y-12">
+                      {/* Duration */}
                       <div className="p-6 sm:p-8 md:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] bg-cyan-500/5 border border-cyan-500/10 space-y-4 sm:space-y-6 relative overflow-hidden">
                         <div className="absolute top-0 right-0 p-6 sm:p-8 opacity-10">
                           <Timer className="w-24 h-24 sm:w-32 sm:h-32" />
@@ -213,6 +246,60 @@ const BarterEngine: React.FC = () => {
                         </p>
                       </div>
 
+                      {/* Complementary skills (optional) */}
+                      {result.complementarySkills && result.complementarySkills.length > 0 && (
+                        <div className="p-5 sm:p-6 rounded-2xl bg-white/5 border border-white/10">
+                          <div className="flex items-center gap-3 mb-4">
+                            <Sparkles className="w-5 h-5 text-cyan-400" />
+                            <h5 className="text-white font-black text-[10px] sm:text-xs uppercase tracking-[0.25em]">
+                              Complementary Skills
+                            </h5>
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {result.complementarySkills.map((skill) => (
+                              <span
+                                key={skill}
+                                className="px-3 py-1 rounded-full bg-slate-800/40 text-[10px] text-cyan-300 font-bold uppercase tracking-[0.15em] border border-cyan-500/20"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Risks + impact (optional) */}
+                      {(result.riskFactors?.length || result.impactScore) && (
+                        <div className="p-5 sm:p-6 rounded-2xl bg-white/5 border border-white/10 space-y-4">
+                          {result.riskFactors && result.riskFactors.length > 0 && (
+                            <>
+                              <div className="flex items-center gap-3">
+                                <AlertTriangle className="w-5 h-5 text-pink-400" />
+                                <h5 className="text-white font-black text-[10px] sm:text-xs uppercase tracking-[0.25em]">
+                                  Risk Factors
+                                </h5>
+                              </div>
+                              <ul className="list-disc list-inside space-y-2">
+                                {result.riskFactors.map((risk, idx) => (
+                                  <li key={idx} className="text-slate-400 text-sm">
+                                    {risk}
+                                  </li>
+                                ))}
+                              </ul>
+                            </>
+                          )}
+                          {result.impactScore && (
+                            <div className="mt-2 flex items-center justify-between px-4 py-2 rounded-xl bg-white/5 border border-white/10">
+                              <span className="text-slate-500 text-[10px] font-black uppercase tracking-[0.25em]">
+                                Impact Score
+                              </span>
+                              <span className="text-cyan-300 text-sm font-bold">{result.impactScore}</span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Action */}
                       <button className="w-full py-4 sm:py-5 md:py-6 bg-gradient-to-r from-cyan-600 to-purple-700 text-white rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm tracking-[0.2em] uppercase hover:scale-[1.02] transition-all shadow-xl shadow-cyan-900/20">
                         Initiate Secure Link
                       </button>

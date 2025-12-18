@@ -14,8 +14,13 @@ export interface Sector {
 }
 
 export interface BarterMatchResult {
-  exchangeStrategy: string;
-  potentialPathways: string[];
-  estimatedValue: string;
-  recommendedDuration: string;
+  exchangeStrategy: string;            // Narrative of how the barter should work
+  potentialPathways: string[];         // Step-by-step pathways for achieving the exchange
+  estimatedValue: string;              // Relative value of this exchange in the ecosystem
+  recommendedDuration: string;         // Suggested timeframe for the barter
+  skillCategory: string;               // Domain classification of the skills
+  skillLevelMatch: string;             // Assessment of level compatibility (beginner/intermediate/advanced)
+  complementarySkills: string[];       // Other skills that could enhance the exchange
+  riskFactors: string[];               // Potential challenges or mismatches
+  impactScore: string;                 // Numeric or qualitative score of ecosystem impact
 }
