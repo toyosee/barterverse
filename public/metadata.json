@@ -1,0 +1,8 @@
+
+{
+  "name": "Barterverse - A Universe of Exchange",
+  "description": "Barterverse is a universe of exchange where skills and knowledge are the primary currency, eliminating financial barriers. It features specialized hubs for software solutions, proptech, edtech, and fintech.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
