@@ -12,7 +12,7 @@ import {
 
 const Footer: React.FC = () => {
   const [showTop, setShowTop] = useState(false);
-  const [protocolOnline, setProtocolOnline] = useState(true);
+  const [protocolOnline] = useState(true);
 
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 400);
