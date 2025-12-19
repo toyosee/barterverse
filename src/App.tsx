@@ -10,6 +10,14 @@ import BarterEngine from './components/BarterEngine';
 
 import AboutPage from './pages/AboutUs';
 import ContactPage from './pages/ContactUs';
+import VortexEnginePage from './pages/VortexEnginePage';
+import KnowledgeNodesPage from './pages/KnowledgeNodesPage';
+import CitizenshipPage from './pages/CitizenshipPage';
+import GovernancePage from './pages/GovernancePage';
+import InternalBarteringEnginePage from './pages/BarterEngine';
+import PrivacySystemPage from './pages/PrivacySystemPage'
+import ExchangeProtocolsPage from './pages/ExchangeProtoclsPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 const LandingPage = () => (
   <>
@@ -53,6 +61,71 @@ const App: React.FC = () => (
         element={
           <Layout>
             <ContactPage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/vortex-engine"
+        element={
+          <Layout>
+            <VortexEnginePage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/knowledge-nodes"
+        element={
+          <Layout>
+            <KnowledgeNodesPage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/citizenship"
+        element={
+          <Layout>
+            <CitizenshipPage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/governance"
+        element={
+          <Layout>
+            <GovernancePage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/barter-engine"
+        element={
+          <Layout>
+            <InternalBarteringEnginePage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/privacy-system"
+        element={
+          <Layout>
+            <PrivacySystemPage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/exchange-protocols"
+        element={
+          <Layout>
+            <ExchangeProtocolsPage />
+          </Layout>
+        }
+      />
+      {/* If wrong route is e=ntered, fall to default 404 page*/}
+      <Route
+        path="*"
+        element={
+          <Layout>
+            <NotFoundPage />
           </Layout>
         }
       />

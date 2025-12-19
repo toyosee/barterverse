@@ -10,6 +10,8 @@ import {
   Activity,
 } from 'lucide-react';
 
+import {Link} from 'react-router-dom';
+
 const Footer: React.FC = () => {
   const [showTop, setShowTop] = useState(false);
   const [protocolOnline] = useState(true);
@@ -114,24 +116,29 @@ const Footer: React.FC = () => {
               </h5>
               <ul className="space-y-4 text-slate-500 text-sm font-light">
                 <li>
-                  <button onClick={() => scrollToId('barter-engine')} className="hover:text-cyan-400 transition-colors">
+                  <Link to="/vortex-engine" className="hover:text-cyan-400 transition-colors">
                     Vortex Engine
-                  </button>
+                  </Link>
                 </li>
                 <li>
-                  <button onClick={() => scrollToId('people')} className="hover:text-cyan-400 transition-colors">
+                  <Link to="/knowledge-nodes" className="hover:text-cyan-400 transition-colors">
                     Knowledge Nodes
-                  </button>
+                  </Link>
                 </li>
                 <li>
-                  <button onClick={() => scrollToId('people')} className="hover:text-cyan-400 transition-colors">
+                  <Link to="/barter-engine" className="hover:text-cyan-400 transition-colors">
+                    Barter Engine
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/citizenship" className="hover:text-cyan-400 transition-colors">
                     Citizenship
-                  </button>
+                  </Link>
                 </li>
                 <li>
-                  <button onClick={() => scrollToId('vision')} className="hover:text-cyan-400 transition-colors">
+                  <Link to="/governance" className="hover:text-cyan-400 transition-colors">
                     Governance
-                  </button>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -192,12 +199,13 @@ const Footer: React.FC = () => {
             © {new Date().getFullYear()} BARTERVERSE ECOSYSTEM
           </p>
           <div className="flex gap-6 text-[10px] text-slate-600 font-bold uppercase tracking-[0.2em]">
-            <a href="#" className="hover:text-white transition-colors">
+            <Link to="/privacy-system" className="hover:text-white transition-colors">
               Privacy.sys
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
+            </Link>
+
+            <Link to="/exchange-protocols" className="hover:text-white transition-colors">
               Exchange.protocols
-            </a>
+            </Link>
           </div>
         </div>
       </div>
