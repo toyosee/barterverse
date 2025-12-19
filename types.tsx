@@ -25,3 +25,9 @@ export interface BarterMatchResult {
   impactScore: string;                 // Numeric or qualitative score of ecosystem impact
   valueMatchIndex: string;             // KPI showing how well offered skill value matches desired skill value (percentage or ratio)
 }
+
+export interface ContactFormData {
+  name: string;
+  email: string;
+  message: string;
+}

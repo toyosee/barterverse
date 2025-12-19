@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
                 </div>
                 <div className="mt-6 sm:mt-8 flex flex-col items-center">
                   <p className="text-white font-black tracking-[0.25em] sm:tracking-[0.3em] text-[9px] sm:text-[10px] uppercase mb-2">
-                    Protocol Briefing
+                    
                   </p>
                   <div className="h-0.5 w-14 sm:w-16 bg-gradient-to-r from-cyan-400 to-purple-500"></div>
                 </div>
