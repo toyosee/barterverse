@@ -127,10 +127,14 @@ const Navbar: React.FC = () => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden absolute top-full left-0 w-full bg-slate-950 border-b border-white/10 p-10 flex flex-col items-center space-y-8 animate-in fade-in slide-in-from-top-4 duration-300">
-          <div className="space-y-4">
+          {/* Home + sections */}
+          <div className="space-y-4 w-full">
             <button
-              onClick={() => navigate('/')}
-              className="text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]"
+              onClick={() => {
+                navigate('/');
+                setMobileMenuOpen(false);
+              }}
+              className="w-full text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]"
             >
               Home
             </button>
@@ -138,30 +142,54 @@ const Navbar: React.FC = () => {
               <button
                 key={id}
                 onClick={() => handleSectionClick(id)}
-                className="block text-xs font-black text-slate-400 hover:text-cyan-400 uppercase tracking-[0.3em]"
+                className="w-full text-xs font-black text-slate-400 hover:text-cyan-400 uppercase tracking-[0.3em]"
               >
                 {id.replace('-', ' ')}
               </button>
             ))}
           </div>
+
+          {/* Other pages */}
           <Link
             to="/about"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]"
+            className="w-full text-center text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]"
           >
             About
           </Link>
           <Link
             to="/contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]"
+            className="w-full text-center text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]"
           >
             Contact
           </Link>
-          <button className="w-full flex items-center justify-center gap-3 bg-white text-slate-950 px-8 py-4 rounded-xl font-black text-[10px] tracking-[0.2em] uppercase">
+
+          {/* Auth links */}
+          <Link
+            to="/login"
+            onClick={() => setMobileMenuOpen(false)}
+            className="w-full text-center text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]"
+          >
+            Login
+          </Link>
+          <Link
+            to="/signup"
+            onClick={() => setMobileMenuOpen(false)}
+            className="w-full text-center text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]"
+          >
+            Sign Up
+          </Link>
+
+          {/* Initialize CTA */}
+          <Link
+            to="/signup"
+            onClick={() => setMobileMenuOpen(false)}
+            className="w-full flex items-center justify-center gap-3 bg-white text-slate-950 px-8 py-4 rounded-xl font-black text-[10px] tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all active:scale-95"
+          >
             <Rocket className="w-4 h-4" />
             Initialize
-          </button>
+          </Link>
         </div>
       )}
     </nav>
