@@ -100,10 +100,18 @@ const Navbar: React.FC = () => {
               Contact
             </Link>
 
-            <button className="flex items-center gap-3 bg-white text-slate-950 px-8 py-3 rounded-xl font-black text-[10px] tracking-[0.2em] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all active:scale-95 uppercase">
+            <Link to="/login" className="text-[10px] font-black text-slate-500 hover:text-white transition-all uppercase tracking-[0.3em]">
+              Login
+            </Link>
+            <Link to="/signup" className="text-[10px] font-black text-slate-500 hover:text-white transition-all uppercase tracking-[0.3em]">
+              Sign Up
+            </Link>
+
+            {/* Initialize Button Link to signup page */}
+            <Link to="/signup" className="flex items-center gap-3 bg-white text-slate-950 px-8 py-3 rounded-xl font-black text-[10px] tracking-[0.2em] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all active:scale-95 uppercase">
               <Rocket className="w-4 h-4" />
               Initialize
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}

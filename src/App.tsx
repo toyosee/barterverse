@@ -17,7 +17,10 @@ import GovernancePage from './pages/GovernancePage';
 import InternalBarteringEnginePage from './pages/BarterEngine';
 import PrivacySystemPage from './pages/PrivacySystemPage'
 import ExchangeProtocolsPage from './pages/ExchangeProtoclsPage';
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
 import NotFoundPage from './pages/NotFoundPage';
+
 
 const LandingPage = () => (
   <>
@@ -117,6 +120,24 @@ const App: React.FC = () => (
         element={
           <Layout>
             <ExchangeProtocolsPage />
+          </Layout>
+        }
+      />
+
+      {/* Login and Signup routes */}
+      <Route
+        path="/login"
+        element={
+          <Layout>
+            <LoginPage />
+          </Layout>
+        }
+      />
+      <Route
+        path="/signup"
+        element={
+          <Layout>
+            <SignUpPage />
           </Layout>
         }
       />
