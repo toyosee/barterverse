@@ -29,7 +29,8 @@ Return your answer strictly as JSON with the following fields:
   "skillLevelMatch": "Assessment of level compatibility (beginner/intermediate/advanced)",
   "complementarySkills": ["Other skills that could enhance the exchange"],
   "riskFactors": ["Potential challenges or mismatches"],
-  "impactScore": "Numeric or qualitative score of ecosystem impact"
+  "impactScore": "Numeric or qualitative score of ecosystem impact",
+  "valueMatchIndex": "Percentage or ratio showing how well the offered skill value matches the desired skill value"
 }
 `;
 
@@ -50,6 +51,7 @@ Return your answer strictly as JSON with the following fields:
           complementarySkills: { type: Type.ARRAY, items: { type: Type.STRING } },
           riskFactors: { type: Type.ARRAY, items: { type: Type.STRING } },
           impactScore: { type: Type.STRING },
+          valueMatchIndex: { type: Type.STRING },
         },
         required: [
           "exchangeStrategy",
@@ -61,6 +63,7 @@ Return your answer strictly as JSON with the following fields:
           "complementarySkills",
           "riskFactors",
           "impactScore",
+          "valueMatchIndex",
         ],
       },
     },

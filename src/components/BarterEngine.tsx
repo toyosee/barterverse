@@ -12,9 +12,34 @@ import {
   BadgeInfo,
   Sparkles,
   AlertTriangle,
+  Scale,
 } from 'lucide-react';
 import { getBarterAdvice } from '../services/geminiService';
 import type { BarterMatchResult } from '../../types';
+
+
+// Helper functions to interpret KPIs
+// Helper function to interpret impact score
+const interpretImpactScore = (score: string): string => {
+  const num = parseFloat(score);
+  if (isNaN(num)) return score; // fallback if AI returns qualitative
+  if (num >= 9) return "High Impact";
+  if (num >= 7) return "Medium-High Impact";
+  if (num >= 5) return "Moderate Impact";
+  if (num >= 3) return "Low Impact";
+  return "Minimal Impact";
+};
+
+// Helper function to interpret Value Match Index (VMI)
+const interpretVMI = (vmi: string): string => {
+  const num = parseFloat(vmi.replace("%", ""));
+  if (isNaN(num)) return vmi; // fallback if AI returns qualitative
+  if (num >= 95) return "Perfect Match";
+  if (num >= 85) return "Strong Match";
+  if (num >= 70) return "Moderate Match";
+  if (num >= 50) return "Weak Match";
+  return "Poor Match";
+};
 
 const BarterEngine: React.FC = () => {
   const [have, setHave] = useState('');
@@ -159,12 +184,30 @@ const BarterEngine: React.FC = () => {
                       </h3>
                     </div>
 
-                    {/* Right block (pill) */}
-                    <div className="flex items-center gap-2 sm:gap-3 md:gap-4 px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full bg-cyan-500/5 border border-cyan-500/20">
-                      <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 flex-shrink-0" />
-                      <span className="text-cyan-400 text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider">
-                        {result.estimatedValue ?? 'N/A'}
-                      </span>
+                    {/* KPI pills (wrap on mobile) */}
+                    <div className="flex flex-wrap items-center gap-3">
+                      {/* Estimated value */}
+                      <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/5 border border-cyan-500/20">
+                        <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 flex-shrink-0" />
+                        <span className="text-cyan-400 text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider">
+                          {result.estimatedValue ?? 'N/A'}
+                        </span>
+                      </div>
+                      {/* Value match index */}
+                      <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/5 border border-purple-500/20">
+                        <Scale className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400 flex-shrink-0" />
+                        <span className="text-purple-300 text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider">
+                          VMI: {interpretVMI(result.valueMatchIndex ?? 'N/A')}
+                        </span>
+                      </div>
+
+                        {/* Impact Score */}
+                      <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-pink-500/5 border border-pink-500/20">
+                        <AlertTriangle className="w-4 h-4 text-pink-400" />
+                        <span className="text-pink-300 text-xs font-black uppercase tracking-wider">
+                          {interpretImpactScore(result.impactScore)}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
@@ -173,7 +216,7 @@ const BarterEngine: React.FC = () => {
                     "{result.exchangeStrategy ?? 'No strategy returned'}"
                   </p>
 
-                  {/* Optional meta badges (render only if available) */}
+                  {/* Meta badges (optional render) */}
                   {(result.skillCategory || result.skillLevelMatch) && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-10 sm:mb-12">
                       {result.skillCategory && (
@@ -228,7 +271,7 @@ const BarterEngine: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Duration + action (+ optional complementary & risks/impact) */}
+                    {/* Duration + action + complementary + risks/impact */}
                     <div className="space-y-6 sm:space-y-8 md:space-y-12">
                       {/* Duration */}
                       <div className="p-6 sm:p-8 md:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] bg-cyan-500/5 border border-cyan-500/10 space-y-4 sm:space-y-6 relative overflow-hidden">
@@ -246,7 +289,7 @@ const BarterEngine: React.FC = () => {
                         </p>
                       </div>
 
-                      {/* Complementary skills (optional) */}
+                      {/* Complementary skills */}
                       {result.complementarySkills && result.complementarySkills.length > 0 && (
                         <div className="p-5 sm:p-6 rounded-2xl bg-white/5 border border-white/10">
                           <div className="flex items-center gap-3 mb-4">
@@ -268,7 +311,7 @@ const BarterEngine: React.FC = () => {
                         </div>
                       )}
 
-                      {/* Risks + impact (optional) */}
+                      {/* Risks + impact */}
                       {(result.riskFactors?.length || result.impactScore) && (
                         <div className="p-5 sm:p-6 rounded-2xl bg-white/5 border border-white/10 space-y-4">
                           {result.riskFactors && result.riskFactors.length > 0 && (

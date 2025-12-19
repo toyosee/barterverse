@@ -23,4 +23,5 @@ export interface BarterMatchResult {
   complementarySkills: string[];       // Other skills that could enhance the exchange
   riskFactors: string[];               // Potential challenges or mismatches
   impactScore: string;                 // Numeric or qualitative score of ecosystem impact
+  valueMatchIndex: string;             // KPI showing how well offered skill value matches desired skill value (percentage or ratio)
 }
