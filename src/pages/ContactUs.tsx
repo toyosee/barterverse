@@ -30,7 +30,7 @@ const ContactPage: React.FC = () => {
           <div className="space-y-8">
             <div className="flex items-center gap-4">
               <Mail className="w-6 h-6 text-cyan-400" />
-              <span className="text-slate-400">info@barterverse.io</span>
+              <span className="text-slate-400">info@thebarterverse.com</span>
             </div>
             <div className="flex items-center gap-4">
               <Phone className="w-6 h-6 text-cyan-400" />
