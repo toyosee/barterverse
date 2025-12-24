@@ -99,11 +99,11 @@ const Navbar: React.FC = () => {
             <Link to="/contact" className="text-[10px] font-black text-slate-500 hover:text-white transition-all uppercase tracking-[0.3em]">
               Contact
             </Link>
-            <Link to="/login" className="text-[10px] font-black text-slate-500 hover:text-white transition-all uppercase tracking-[0.3em]">
+            <Link to="/coming-soon" className="text-[10px] font-black text-slate-500 hover:text-white transition-all uppercase tracking-[0.3em]">
               Login
             </Link>
-            
-            <Link to="/signup" className="flex items-center gap-3 bg-white text-slate-950 px-8 py-3 rounded-xl font-black text-[10px] tracking-[0.2em] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all active:scale-95 uppercase">
+
+            <Link to="/coming-soon" className="flex items-center gap-3 bg-white text-slate-950 px-8 py-3 rounded-xl font-black text-[10px] tracking-[0.2em] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all active:scale-95 uppercase">
               <Rocket className="w-4 h-4" />
               Initialize
             </Link>
@@ -146,11 +146,11 @@ const Navbar: React.FC = () => {
           <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="w-full text-center text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]">
             Contact
           </Link>
-          <Link to="/login" onClick={() => setMobileMenuOpen(false)} className="w-full text-center text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]">
+          <Link to="/coming-soon" onClick={() => setMobileMenuOpen(false)} className="w-full text-center text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]">
             Login
           </Link>
 
-          <Link to="/signup" onClick={() => setMobileMenuOpen(false)} className="w-full flex items-center justify-center gap-3 bg-white text-slate-950 px-8 py-4 rounded-xl font-black text-[10px] tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all active:scale-95">
+          <Link to="/coming-soon" onClick={() => setMobileMenuOpen(false)} className="w-full flex items-center justify-center gap-3 bg-white text-slate-950 px-8 py-4 rounded-xl font-black text-[10px] tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all active:scale-95">
             <Rocket className="w-4 h-4" />
             Initialize
           </Link>

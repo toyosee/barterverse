@@ -182,12 +182,17 @@ const GovernancePage: React.FC = () => {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="text-center">
-          <button className="px-6 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-2xl font-black text-sm tracking-[0.2em] uppercase hover:scale-[1.02] transition-all">
-            View Governance Handbook
-          </button>
-        </section>
+          {/* CTA */}
+          <section className="text-center">
+            <a
+            href="/barterverse_governance_handbook.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+              className="inline-block px-6 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 text-white rounded-2xl font-black text-sm tracking-[0.2em] uppercase hover:scale-[1.02] transition-all"
+            >
+              View Governance Handbook
+            </a>
+          </section>
       </div>
     </main>
   );

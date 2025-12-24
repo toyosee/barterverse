@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronRight, Play, Sparkles, Globe2 } from 'lucide-react';
 
 const Hero: React.FC = () => {
@@ -44,15 +45,19 @@ const Hero: React.FC = () => {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 justify-center items-center mb-20 sm:mb-28">
+          <Link to="/coming-soon">
           <button className="group relative w-full sm:w-auto px-9 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-cyan-400 to-purple-600 text-white rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm tracking-[0.2em] hover:shadow-[0_0_50px_rgba(147,51,234,0.35)] transition-all overflow-hidden uppercase">
             <span className="relative z-10 flex items-center justify-center gap-2">
               Join the Exchange <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </span>
           </button>
+          </Link>
+          <Link to="/coming-soon">
           <button className="w-full sm:w-auto px-9 sm:px-12 py-4 sm:py-5 bg-transparent border border-white/20 text-white rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm tracking-[0.2em] hover:bg-white/10 transition-all backdrop-blur-md flex items-center justify-center gap-3 uppercase">
             <Globe2 className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
             Explore Hubs
-          </button>
+            </button>
+          </Link>
         </div>
 
         {/* Cinematic Preview Section */}

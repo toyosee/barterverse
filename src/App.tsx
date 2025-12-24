@@ -19,6 +19,7 @@ import PrivacySystemPage from './pages/PrivacySystemPage'
 import ExchangeProtocolsPage from './pages/ExchangeProtoclsPage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
+import ComingSoon from './pages/ComingSoon';
 import NotFoundPage from './pages/NotFoundPage';
 
 
@@ -120,6 +121,15 @@ const App: React.FC = () => (
         element={
           <Layout>
             <ExchangeProtocolsPage />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/coming-soon"
+        element={
+          <Layout>
+            <ComingSoon />
           </Layout>
         }
       />
