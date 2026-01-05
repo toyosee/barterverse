@@ -17,6 +17,7 @@ import GovernancePage from './pages/GovernancePage';
 import InternalBarteringEnginePage from './pages/BarterEngine';
 import PrivacySystemPage from './pages/PrivacySystemPage'
 import ExchangeProtocolsPage from './pages/ExchangeProtoclsPage';
+import TaxAssistPage from './pages/TaxAssist';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import ComingSoon from './pages/ComingSoon';
@@ -121,6 +122,15 @@ const App: React.FC = () => (
         element={
           <Layout>
             <ExchangeProtocolsPage />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/tax-assist"
+        element={
+          <Layout>
+            <TaxAssistPage />
           </Layout>
         }
       />

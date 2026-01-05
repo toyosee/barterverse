@@ -171,9 +171,12 @@ const Footer: React.FC = () => {
                   </button>
                 </li>
                 <li>
-                  <button onClick={() => scrollToId('sectors')} className="hover:text-cyan-400 transition-colors">
+                  {/* <button onClick={() => scrollToId('sectors')} className="hover:text-cyan-400 transition-colors">
                     FinTech Galaxy
-                  </button>
+                  </button> */}
+                  <Link to="/tax-assist" className="hover:text-cyan-400 transition-colors">
+                    Fintech - Tax Assist
+                  </Link>
                 </li>
                 <li>
                   <button onClick={() => scrollToId('sectors')} className="hover:text-cyan-400 transition-colors">
