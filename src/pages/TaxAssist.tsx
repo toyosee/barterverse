@@ -11,6 +11,7 @@ import {
   Twitter,
   Linkedin,
   Instagram,
+  Music2,
   Mail,
   LifeBuoy,
   Plus,
@@ -58,7 +59,8 @@ const TaxAssistPage: React.FC = () => {
     const urls: Record<string, string> = {
       twitter: 'https://twitter.com/thebarterverse',
       linkedin: 'https://linkedin.com/company/thebarterverse',
-      instagram: 'https://instagram.com/thebarterverse',
+      instagram: 'https://www.instagram.com/taxassist_ng/',
+      tiktok: "https://www.tiktok.com/@taxassisntng?is_from_webapp=1&sender_device=pc"
     };
     if (urls[platform]) window.open(urls[platform], '_blank');
   };
@@ -136,6 +138,7 @@ const TaxAssistPage: React.FC = () => {
               <button onClick={() => openSocialMedia('twitter')} className="p-3 rounded-xl border border-white/10 text-slate-400 hover:text-cyan-400 hover:border-cyan-400 transition-all"><Twitter className="w-5 h-5" /></button>
               <button onClick={() => openSocialMedia('linkedin')} className="p-3 rounded-xl border border-white/10 text-slate-400 hover:text-cyan-400 hover:border-cyan-400 transition-all"><Linkedin className="w-5 h-5" /></button>
               <button onClick={() => openSocialMedia('instagram')} className="p-3 rounded-xl border border-white/10 text-slate-400 hover:text-cyan-400 hover:border-cyan-400 transition-all"><Instagram className="w-5 h-5" /></button>
+              <button onClick={() => openSocialMedia('tiktok')} className="p-3 rounded-xl border border-white/10 text-slate-400 hover:text-cyan-400 hover:border-cyan-400 transition-all"><Music2 className="w-5 h-5" /></button>
             </div>
           </div>
 
