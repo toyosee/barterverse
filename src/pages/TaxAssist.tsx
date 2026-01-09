@@ -127,7 +127,7 @@ const TaxAssistPage: React.FC = () => {
                 <Download className="w-5 h-5" /> App Store
               </button>
               <button 
-                onClick={() => window.open('market://details?id=com.thebarterverse.taxassist', '_blank')}
+                onClick={() => window.open('https://play.google.com/store/apps/details?id=com.thebarterverse.taxassist', '_blank')}
                 className="flex items-center justify-center gap-3 bg-transparent border border-white/10 text-white px-10 py-5 rounded-2xl font-black text-xs tracking-widest uppercase hover:bg-white/5 transition-all"
               >
                 <Download className="w-5 h-5" /> Google Play
