@@ -18,6 +18,7 @@ import InternalBarteringEnginePage from './pages/BarterEngine';
 import PrivacySystemPage from './pages/PrivacySystemPage'
 import ExchangeProtocolsPage from './pages/ExchangeProtoclsPage';
 import TaxAssistPage from './pages/TaxAssist';
+import VailLandingPage from './pages/Vail';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import ComingSoon from './pages/ComingSoon';
@@ -131,6 +132,15 @@ const App: React.FC = () => (
         element={
           <Layout>
             <TaxAssistPage />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/vail"
+        element={
+          <Layout>
+            <VailLandingPage />
           </Layout>
         }
       />
