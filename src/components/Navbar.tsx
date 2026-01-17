@@ -41,13 +41,12 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="flex justify-between items-center">
           
-          {/* Updated Logo Section */}
+          {/* Logo */}
           <div 
             className="flex items-center gap-4 group cursor-pointer" 
             onClick={() => navigate('/')}
           >
             <div className="relative">
-              {/* Glow effect that matches logo theme */}
               <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400/20 to-purple-600/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition duration-500"></div>
               
               <div className="relative w-12 h-12 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
@@ -64,7 +63,7 @@ const Navbar: React.FC = () => {
                 BARTERVERSE
               </span>
               <span className="text-[8px] font-black tracking-[0.5em] text-cyan-500 uppercase mt-1">
-                A Universe of Exchange
+                A Post-Monetary Economic Layer
               </span>
             </div>
           </div>
@@ -76,17 +75,22 @@ const Navbar: React.FC = () => {
                 onClick={() => setHomeDropdownOpen(!homeDropdownOpen)}
                 className="flex items-center gap-1 text-[10px] font-black text-slate-500 hover:text-white transition-all uppercase tracking-[0.3em]"
               >
-                Home <ChevronDown className="w-3 h-3" />
+                Protocol <ChevronDown className="w-3 h-3" />
               </button>
               {homeDropdownOpen && (
-                <div className="absolute mt-2 bg-slate-900 border border-white/10 rounded-xl shadow-lg p-4 space-y-3 min-w-[150px]">
-                  {['vision', 'people', 'sectors', 'barter-engine'].map((id) => (
+                <div className="absolute mt-2 bg-slate-900 border border-white/10 rounded-xl shadow-lg p-4 space-y-3 min-w-[180px]">
+                  {[
+                    { id: 'vision', label: 'Protocol Vision' },
+                    { id: 'people', label: 'Network Roles' },
+                    { id: 'sectors', label: 'Economic Domains' },
+                    { id: 'barter-engine', label: 'Exchange Engine' },
+                  ].map(({ id, label }) => (
                     <button
                       key={id}
                       onClick={() => handleSectionClick(id)}
                       className="block w-full text-left text-[10px] font-black text-slate-400 hover:text-cyan-400 uppercase tracking-[0.3em]"
                     >
-                      {id.replace('-', ' ')}
+                      {label}
                     </button>
                   ))}
                 </div>
@@ -94,18 +98,18 @@ const Navbar: React.FC = () => {
             </div>
 
             <Link to="/about" className="text-[10px] font-black text-slate-500 hover:text-white transition-all uppercase tracking-[0.3em]">
-              About
+              Network
             </Link>
             <Link to="/contact" className="text-[10px] font-black text-slate-500 hover:text-white transition-all uppercase tracking-[0.3em]">
               Contact
             </Link>
             <Link to="/coming-soon" className="text-[10px] font-black text-slate-500 hover:text-white transition-all uppercase tracking-[0.3em]">
-              Login
+              Portal
             </Link>
 
             <Link to="/coming-soon" className="flex items-center gap-3 bg-white text-slate-950 px-8 py-3 rounded-xl font-black text-[10px] tracking-[0.2em] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all active:scale-95 uppercase">
               <Rocket className="w-4 h-4" />
-              Initialize
+              Enter Protocol
             </Link>
           </div>
 
@@ -127,32 +131,37 @@ const Navbar: React.FC = () => {
               onClick={() => { navigate('/'); setMobileMenuOpen(false); }}
               className="w-full text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]"
             >
-              Home
+              Protocol Home
             </button>
-            {['vision', 'people', 'sectors', 'barter-engine'].map((id) => (
+            {[
+              { id: 'vision', label: 'Protocol Vision' },
+              { id: 'people', label: 'Network Roles' },
+              { id: 'sectors', label: 'Economic Domains' },
+              { id: 'barter-engine', label: 'Exchange Engine' },
+            ].map(({ id, label }) => (
               <button
                 key={id}
                 onClick={() => handleSectionClick(id)}
                 className="w-full text-xs font-black text-slate-400 hover:text-cyan-400 uppercase tracking-[0.3em]"
               >
-                {id.replace('-', ' ')}
+                {label}
               </button>
             ))}
           </div>
 
           <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="w-full text-center text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]">
-            About
+            Network
           </Link>
           <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="w-full text-center text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]">
             Contact
           </Link>
           <Link to="/coming-soon" onClick={() => setMobileMenuOpen(false)} className="w-full text-center text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]">
-            Login
+            Portal
           </Link>
 
           <Link to="/coming-soon" onClick={() => setMobileMenuOpen(false)} className="w-full flex items-center justify-center gap-3 bg-white text-slate-950 px-8 py-4 rounded-xl font-black text-[10px] tracking-[0.2em] uppercase hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all active:scale-95">
             <Rocket className="w-4 h-4" />
-            Initialize
+            Enter Protocol
           </Link>
         </div>
       )}

@@ -7,7 +7,7 @@ const personas: Persona[] = [
     id: 'initiators',
     title: 'Initiators',
     description:
-      'The architects of vision. They identify needs and catalyze the exchange process by seeking specialized talent for revolutionary projects.',
+      'Originators of value intent. Initiators define problems, opportunities, and unmet needs, encoding them into structured value requests that enter the Barterverse exchange graph. They unlock BC liquidity by catalyzing economic motion.',
     icon: 'Lightbulb',
     color: 'from-blue-400 to-cyan-500',
   },
@@ -15,7 +15,7 @@ const personas: Persona[] = [
     id: 'executors',
     title: 'Executors',
     description:
-      'Masters of craft. They bring expertise to the table, bartering their mastery for new learning paths or complementary skill sets.',
+      'Producers of value output. Executors deploy verified skills, labor, and intelligence to fulfill value intents, earning Barter Credits (BC), reputation weight, and pricing leverage across the ecosystem.',
     icon: 'Cpu',
     color: 'from-cyan-500 to-purple-600',
   },
@@ -23,7 +23,7 @@ const personas: Persona[] = [
     id: 'connectors',
     title: 'Connectors',
     description:
-      'The fabric of the universe. They facilitate high-value matches, ensuring that the liquidity of knowledge remains fluid and fair.',
+      'Liquidity and trust orchestrators. Connectors optimize matching efficiency, rebalance supply-demand asymmetries, and stabilize multi-party exchanges — earning BC yield through network optimization and reputation amplification.',
     icon: 'Network',
     color: 'from-purple-600 to-pink-500',
   },
@@ -49,17 +49,17 @@ const PersonasSection: React.FC = () => {
         <div className="text-center mb-12 sm:mb-20 lg:mb-32 px-2">
           <div className="inline-flex items-center gap-2 text-cyan-400 font-black text-[9px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.4em] mb-4 sm:mb-6">
             <UserCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            Citizens of the Universe
+            Economic Citizens
           </div>
           <h2 className="text-3xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 sm:mb-8 font-grotesk tracking-tight leading-tight">
             The Core{' '}
             <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-              Hierarchy
+              Value Actors
             </span>
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto text-base sm:text-lg md:text-xl font-light leading-relaxed px-2">
-            In Barterverse, status is defined by value contribution. Everyone fits into one of these essential roles,
-            creating a self-sustaining economy of growth.
+            Barterverse is structured around three protocol-native economic roles — each encoding, executing, and
+            optimizing value flows within a post-monetary exchange network powered by Barter Credits (BC).
           </p>
         </div>
 
@@ -99,13 +99,13 @@ const PersonasSection: React.FC = () => {
                   {/* Footer Action */}
                   <div className="pt-6 sm:pt-8 border-t border-white/10">
                     <button className="group/btn flex items-center gap-3 sm:gap-4 text-cyan-400 font-black tracking-[0.15em] sm:tracking-[0.2em] text-[9px] sm:text-[10px] uppercase hover:gap-5 sm:hover:gap-6 transition-all">
-                      ACCESS PROTOCOLS <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      ACCESS ECONOMIC LAYER <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </button>
                   </div>
 
                   {/* HUD overlay */}
                   <div className="absolute top-4 sm:top-6 right-4 sm:right-6 text-[9px] sm:text-[10px] font-mono text-slate-500 opacity-40 group-hover:opacity-80 transition-opacity">
-                    ID: {persona.id.toUpperCase()}
+                    ROLE: {persona.id.toUpperCase()}
                   </div>
                 </div>
               </div>

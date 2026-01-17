@@ -18,39 +18,59 @@ const PrivacySystemPage: React.FC = () => {
             Privacy System
           </div>
           <h1 className="text-4xl md:text-6xl font-bold text-white font-grotesk tracking-tight">
-            Trust and <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Protection</span>
+            Sovereign <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Trust Architecture</span>
           </h1>
           <p className="text-slate-400 max-w-3xl mx-auto mt-6 text-lg leading-relaxed">
-            Privacy in Barterverse is community‑driven. It safeguards identity, ensures secure exchanges, and balances transparency with confidentiality.
+            The Barterverse Privacy System is a cryptographic trust layer that enables secure collaboration, compliant
+            exchange, and identity sovereignty — without sacrificing transparency, accountability, or network
+            coordination.
           </p>
         </header>
 
-        {/* Core Principles */}
-        <section className="grid md:grid-cols-2 gap-12">
+        {/* Core Architecture */}
+        <section className="grid md:grid-cols-3 gap-10">
           <div className="glass-panel p-8 rounded-3xl border border-white/10 space-y-4">
             <Lock className="w-6 h-6 text-cyan-400" />
-            <h2 className="text-xl font-bold text-white">Data Protection</h2>
+            <h2 className="text-xl font-bold text-white">End-to-End Encryption</h2>
             <p className="text-slate-400">
-              All personal and exchange data is encrypted. Community members control what is shared and what remains private.
+              All identity credentials, communications, and exchange artifacts are encrypted at rest and in transit
+              using zero-trust primitives and forward-secure key management. Only authorized counterparties can access
+              sensitive data.
             </p>
           </div>
+
           <div className="glass-panel p-8 rounded-3xl border border-white/10 space-y-4">
             <Eye className="w-6 h-6 text-purple-400" />
-            <h2 className="text-xl font-bold text-white">Selective Transparency</h2>
+            <h2 className="text-xl font-bold text-white">Selective Disclosure</h2>
             <p className="text-slate-400">
-              Exchange outcomes are visible for accountability, but sensitive details remain confidential to protect participants.
+              Users control data exposure through cryptographic proofs and access policies — revealing only what is
+              required for trust, compliance, or exchange execution, while preserving personal and commercial
+              confidentiality.
+            </p>
+          </div>
+
+          <div className="glass-panel p-8 rounded-3xl border border-white/10 space-y-4">
+            <Shield className="w-6 h-6 text-cyan-400" />
+            <h2 className="text-xl font-bold text-white">Verifiable Trust Signals</h2>
+            <p className="text-slate-400">
+              Reputation scores, credential attestations, and transaction integrity proofs are published as
+              cryptographically verifiable trust artifacts — enabling accountability without exposing private
+              identities or proprietary data.
             </p>
           </div>
         </section>
 
-        {/* Community Scope */}
+        {/* Governance & Community Layer */}
         <section className="glass-panel p-8 md:p-12 rounded-[2rem] border border-white/10">
           <div className="flex items-center gap-3 mb-6">
-            <UserCheck className="w-6 h-6 text-cyan-400" />
-            <h2 className="text-xl font-bold text-white">Community Scope</h2>
+            <UserCheck className="w-6 h-6 text-purple-400" />
+            <h2 className="text-xl font-bold text-white">Community-Governed Privacy</h2>
           </div>
-          <p className="text-slate-400">
-            Privacy is not just technical — it’s cultural. Citizens are empowered to set boundaries, report breaches, and co‑create policies that protect trust. The system evolves with community feedback, ensuring relevance and resilience.
+          <p className="text-slate-400 leading-relaxed">
+            Privacy in Barterverse is enforced not only through cryptography but through protocol governance. Citizens
+            co-define access policies, escalation paths, and breach remediation standards. The system evolves through
+            transparent audits, continuous threat modeling, and community-driven upgrades — ensuring long-term trust,
+            regulatory adaptability, and institutional resilience.
           </p>
         </section>
       </div>

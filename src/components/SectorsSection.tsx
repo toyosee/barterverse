@@ -28,53 +28,53 @@ type Sector = {
 
 const sectors: Sector[] = [
   {
-    title: 'Software Nexus',
+    title: 'Software & Intelligence Infrastructure',
     description:
-      'The core development engine. Exchange high-level engineering for architecture or product strategy.',
+      'Core digital production layer of Barterverse. Engineers, architects, and AI builders convert expertise into Barter Credits (BC) through verified execution, powering system design, automation, and decentralized application development without capital constraints.',
     icon: 'Terminal',
-    tags: ['AI/ML', 'React', 'Node.js', 'Cloud', 'Kubernetes'],
+    tags: ['AI/ML', 'Systems Architecture', 'Cloud Infra', 'Blockchain', 'DevOps'],
   },
   {
-    title: 'PropTech Core',
+    title: 'Physical Infrastructure & Built Environment',
     description:
-      'Smart property location and acquisition powered by decentralized asset exchange.',
+      'Urban planning, construction, logistics, and asset optimization coordinated through BC-based exchange rather than fiat procurement. Real-world infrastructure becomes programmable, value-measured, and execution-driven.',
     icon: 'Building2',
-    tags: ['GIS', 'IoT Sensors', 'Blockchain', 'Smart Contracts'],
+    tags: ['Smart Cities', 'Construction', 'Asset Mapping', 'Logistics', 'PropTech'],
   },
   {
-    title: 'EdTech Spheres',
+    title: 'Education, Skills & Human Capital',
     description:
-      'Smart learning platforms and certification systems for adaptive education.',
+      'Learning becomes a productive asset. Skills acquisition, mentorship, certification, and institutional training are issued BC based on verified knowledge transfer and outcome performance — forming a compounding intelligence economy.',
     icon: 'GraduationCap',
-    tags: ['LMS', 'AR/VR', 'Gamification', 'Adaptive AI'],
+    tags: ['Learning Systems', 'Credentialing', 'Mentorship', 'Talent Markets', 'Skill Graphs'],
   },
   {
-    title: 'FinTech Pulse',
+    title: 'Financial Systems & Value Infrastructure',
     description:
-      'Non-monetary financial systems and inclusive value transfer protocols.',
+      'Barter Credits operate as a non-fiat economic layer enabling value routing, escrow settlement, credit issuance, and liquidity balancing — forming the backbone of a post-monetary coordination economy.',
     icon: 'Wallet',
-    tags: ['DeFi', 'Smart Nodes', 'Zero-Knowledge Proofs'],
+    tags: ['BC Ledger', 'Settlement Layer', 'Liquidity Routing', 'Credit Systems', 'Value Graphs'],
   },
   {
-    title: 'Security Grid',
+    title: 'Security, Trust & Resilience Systems',
     description:
-      'Smart security solutions for cyber resilience and AI-driven surveillance.',
+      'Cybersecurity, intelligence operations, identity assurance, and infrastructure protection delivered and settled via BC-backed reputation weight and cryptographic verification instead of trust-based contracting.',
     icon: 'Shield',
-    tags: ['Cybersecurity', 'AI Vision', 'Zero Trust', 'Encryption'],
+    tags: ['Cyber Defense', 'Zero Trust', 'Identity Systems', 'Encryption', 'Risk Mitigation'],
   },
   {
-    title: 'Emergency Systems',
+    title: 'Emergency Response & Crisis Operations',
     description:
-      'Smart emergency response and predictive crisis coordination.',
+      'Disaster relief, humanitarian logistics, public safety coordination, and crisis intelligence powered by real-time BC liquidity routing and contributor mobilization — enabling instant execution without budget bottlenecks.',
     icon: 'AlertTriangle',
-    tags: ['IoT Alerts', 'Predictive AI', 'Edge Computing'],
+    tags: ['Disaster Response', 'Emergency Logistics', 'Humanitarian Ops', 'Predictive Risk', 'Rapid Mobilization'],
   },
   {
-    title: 'AI Applications Hub',
+    title: 'Artificial Intelligence & Autonomous Markets',
     description:
-      'Applied AI solutions across industries, powering automation and intelligence.',
+      'Autonomous agents, decision engines, and cognitive systems produce, exchange, and optimize value autonomously using BC as machine-readable economic currency — enabling self-coordinating intelligence economies.',
     icon: 'Cpu',
-    tags: ['NLP', 'Computer Vision', 'Generative AI'],
+    tags: ['Autonomous Agents', 'Generative AI', 'Cognitive Systems', 'Decision Engines', 'Self-Optimizing Markets'],
   },
 ];
 
@@ -145,16 +145,18 @@ const SectorsSection: React.FC = () => {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 text-purple-400 font-black text-[10px] uppercase tracking-[0.4em] mb-4">
               <Layers className="w-4 h-4" />
-              Integrated Solutions
+              Economic Sectors
             </div>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 font-grotesk tracking-tight leading-[1.05]">
-              Ecosystem{' '}
+              Barterverse{' '}
               <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-                Verticals
+                Value Domains
               </span>
             </h2>
             <p className="text-slate-400 text-base md:text-lg font-light leading-relaxed max-w-xl">
-              Smart solutions across education, security, emergency response, AI innovation, and property technology.
+              Barterverse functions as a multi-sector economic operating system where real-world production, intelligence,
+              and coordination are priced, matched, and settled using Barter Credits (BC) — replacing money-first systems
+              with value-first infrastructure.
             </p>
             <div className="h-1 w-24 bg-gradient-to-r from-cyan-400 to-purple-500 mt-5"></div>
           </div>
@@ -211,7 +213,7 @@ const SectorsSection: React.FC = () => {
                     </div>
                   </div>
                   <div className="absolute bottom-5 right-5 text-[9px] font-mono text-purple-400 opacity-40 group-hover:opacity-80 transition-opacity">
-                    NODE-{index + 1}
+                    DOMAIN-{index + 1}
                   </div>
                 </div>
               </div>
@@ -278,7 +280,7 @@ const SectorsSection: React.FC = () => {
                     </div>
                   </div>
                   <div className="absolute bottom-6 right-6 text-[9px] font-mono text-purple-400 opacity-40 group-hover:opacity-80 transition-opacity">
-                    NODE-{i + 1}
+                    DOMAIN-{i + 1}
                   </div>
                 </div>
               );

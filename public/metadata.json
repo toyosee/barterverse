@@ -1,7 +1,6 @@
-
 {
-  "name": "Barterverse - A Universe of Exchange",
-  "description": "Barterverse is a universe of exchange where skills and knowledge are the primary currency, eliminating financial barriers. It features specialized hubs for software solutions, proptech, edtech, and fintech.",
+  "name": "Barterverse — A Post-Monetary Economic Layer",
+  "description": "Barterverse is a decentralized exchange ecosystem where skills, intelligence, and execution power function as primary currencies. It operates through modular engines, governance protocols, and sector-specific systems across technology, infrastructure, education, finance, security, and public services — enabling trustless collaboration, value matching, and scalable global coordination without traditional financial barriers.",
   "requestFramePermissions": [
     "camera"
   ]

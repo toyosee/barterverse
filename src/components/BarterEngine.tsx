@@ -13,32 +13,36 @@ import {
   Sparkles,
   AlertTriangle,
   Scale,
+  Coins,
+  Link2,
 } from 'lucide-react';
 import { getBarterAdvice } from '../services/geminiService';
 import type { BarterMatchResult } from '../../types';
 
+// ============================
+// Protocol Interpretation Layer
+// ============================
 
-// Helper functions to interpret KPIs
 // Helper function to interpret impact score
 const interpretImpactScore = (score: string): string => {
   const num = parseFloat(score);
-  if (isNaN(num)) return score; // fallback if AI returns qualitative
-  if (num >= 9) return "High Impact";
-  if (num >= 7) return "Medium-High Impact";
-  if (num >= 5) return "Moderate Impact";
-  if (num >= 3) return "Low Impact";
+  if (isNaN(num)) return score;
+  if (num >= 9) return "System-Level Impact";
+  if (num >= 7) return "High Network Impact";
+  if (num >= 5) return "Moderate Economic Impact";
+  if (num >= 3) return "Localized Impact";
   return "Minimal Impact";
 };
 
 // Helper function to interpret Value Match Index (VMI)
 const interpretVMI = (vmi: string): string => {
   const num = parseFloat(vmi.replace("%", ""));
-  if (isNaN(num)) return vmi; // fallback if AI returns qualitative
-  if (num >= 95) return "Perfect Match";
-  if (num >= 85) return "Strong Match";
-  if (num >= 70) return "Moderate Match";
-  if (num >= 50) return "Weak Match";
-  return "Poor Match";
+  if (isNaN(num)) return vmi;
+  if (num >= 95) return "Protocol-Perfect Alignment";
+  if (num >= 85) return "Strong Value Convergence";
+  if (num >= 70) return "Viable Alignment";
+  if (num >= 50) return "Weak Convergence";
+  return "Non-Optimal Alignment";
 };
 
 const BarterEngine: React.FC = () => {
@@ -50,7 +54,7 @@ const BarterEngine: React.FC = () => {
 
   const handleConsult = async () => {
     if (!have || !want) {
-      setErrorMsg('Please enter both fields to generate an exchange map.');
+      setErrorMsg('Both value inputs are required to compute an exchange topology.');
       return;
     }
     setErrorMsg(null);
@@ -60,7 +64,7 @@ const BarterEngine: React.FC = () => {
       setResult(advice);
     } catch (error) {
       console.error(error);
-      setErrorMsg('Unable to synchronize nodes. Please try again.');
+      setErrorMsg('Exchange engine synchronization failed. Please retry.');
     } finally {
       setLoading(false);
     }
@@ -88,14 +92,15 @@ const BarterEngine: React.FC = () => {
                 <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white font-grotesk tracking-tighter mb-4 sm:mb-6 uppercase">
                   Vortex{' '}
                   <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-                    Engine
+                    Exchange Engine
                   </span>
                 </h2>
                 <div className="h-1 w-20 sm:w-24 bg-gradient-to-r from-cyan-400 to-purple-600 mb-6 sm:mb-8"></div>
-                <p className="text-slate-400 text-base sm:text-lg md:text-xl font-light max-w-2xl leading-relaxed px-2">
-                  The heart of our universe. Analyze potential knowledge exchanges and discover how your mastery can
-                  fuel your growth.
-                </p>
+                  <p className="text-slate-400 text-base sm:text-lg md:text-xl font-light max-w-2xl leading-relaxed px-2">
+                    The computational core of Barterverse. The Value Exchange Engine(VEE) analyzes human capability,
+                    intent, time, impact potential, and risk vectors to algorithmically construct optimal exchanges —
+                    without requiring money, intermediaries, or centralized trust.
+                  </p>
               </div>
 
               {/* Input grid */}
@@ -105,19 +110,19 @@ const BarterEngine: React.FC = () => {
                   <div className="flex items-center gap-3 px-1">
                     <Search className="w-4 h-4 text-cyan-400" />
                     <label className="text-[10px] sm:text-[11px] font-black text-slate-500 uppercase tracking-[0.3em]">
-                      Skill to Offer
+                      Value Contribution (Input Asset)
                     </label>
                   </div>
                   <input
                     type="text"
                     value={have}
                     onChange={(e) => setHave(e.target.value)}
-                    placeholder="e.g., Blockchain Architecture"
+                    placeholder="e.g., Distributed Systems Architecture"
                     className="w-full bg-slate-950/80 border border-white/10 rounded-2xl sm:rounded-3xl px-5 sm:px-8 py-4 sm:py-6 text-white placeholder:text-slate-700 focus:outline-none focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/20 transition-all text-base sm:text-lg md:text-xl font-medium"
                   />
                 </div>
 
-                {/* Arrow (stays centered) */}
+                {/* Arrow */}
                 <div className="flex justify-center order-[-1] lg:order-none">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-cyan-400 transition-all hover:scale-110">
                     <ArrowRightLeft className="w-6 h-6 sm:w-7 sm:h-7" />
@@ -129,14 +134,14 @@ const BarterEngine: React.FC = () => {
                   <div className="flex items-center gap-3 px-1">
                     <Target className="w-4 h-4 text-purple-400" />
                     <label className="text-[10px] sm:text-[11px] font-black text-slate-500 uppercase tracking-[0.3em]">
-                      Skill to Acquire
+                      Value Objective (Output Asset)
                     </label>
                   </div>
                   <input
                     type="text"
                     value={want}
                     onChange={(e) => setWant(e.target.value)}
-                    placeholder="e.g., AI Ethics Consulting"
+                    placeholder="e.g., AI Risk Governance Advisory"
                     className="w-full bg-slate-950/80 border border-white/10 rounded-2xl sm:rounded-3xl px-5 sm:px-8 py-4 sm:py-6 text-white placeholder:text-slate-700 focus:outline-none focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 transition-all text-base sm:text-lg md:text-xl font-medium"
                   />
                 </div>
@@ -162,10 +167,10 @@ const BarterEngine: React.FC = () => {
                 {loading ? (
                   <span className="flex items-center justify-center gap-3 sm:gap-4">
                     <Loader2 className="animate-spin w-6 h-6 sm:w-8 sm:h-8" />
-                    Synchronizing Nodal Points...
+                    Computing Exchange Topology...
                   </span>
                 ) : (
-                  <span className="relative z-10">Generate Exchange Map</span>
+                  <span className="relative z-10">Compute Value Exchange</span>
                 )}
               </button>
 
@@ -177,22 +182,23 @@ const BarterEngine: React.FC = () => {
                     {/* Left block */}
                     <div>
                       <div className="text-[10px] sm:text-[11px] font-black text-cyan-400 uppercase tracking-[0.3em] mb-2">
-                        Analysis Result
+                        Exchange Analysis
                       </div>
                       <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-grotesk tracking-tight uppercase">
-                        Protocol: Value-Match
+                        Protocol: Barter Credit Settlement
                       </h3>
                     </div>
 
-                    {/* KPI pills (wrap on mobile) */}
+                    {/* KPI pills */}
                     <div className="flex flex-wrap items-center gap-3">
-                      {/* Estimated value */}
+                      {/* Estimated BC value */}
                       <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/5 border border-cyan-500/20">
-                        <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 flex-shrink-0" />
+                        <Coins className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 flex-shrink-0" />
                         <span className="text-cyan-400 text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider">
-                          {result.estimatedValue ?? 'N/A'}
+                          BC Value: {result.estimatedValue ?? 'N/A'}
                         </span>
                       </div>
+
                       {/* Value match index */}
                       <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/5 border border-purple-500/20">
                         <Scale className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400 flex-shrink-0" />
@@ -201,9 +207,9 @@ const BarterEngine: React.FC = () => {
                         </span>
                       </div>
 
-                        {/* Impact Score */}
+                      {/* Impact Score */}
                       <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-pink-500/5 border border-pink-500/20">
-                        <AlertTriangle className="w-4 h-4 text-pink-400" />
+                        <TrendingUp className="w-4 h-4 text-pink-400" />
                         <span className="text-pink-300 text-xs font-black uppercase tracking-wider">
                           {interpretImpactScore(result.impactScore)}
                         </span>
@@ -216,7 +222,7 @@ const BarterEngine: React.FC = () => {
                     "{result.exchangeStrategy ?? 'No strategy returned'}"
                   </p>
 
-                  {/* Meta badges (optional render) */}
+                  {/* Meta badges */}
                   {(result.skillCategory || result.skillLevelMatch) && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-10 sm:mb-12">
                       {result.skillCategory && (
@@ -224,7 +230,7 @@ const BarterEngine: React.FC = () => {
                           <Layers className="w-5 h-5 text-cyan-400" />
                           <div className="text-slate-300 text-sm">
                             <span className="text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black block mb-1">
-                              Skill category
+                              Skill Domain
                             </span>
                             {result.skillCategory}
                           </div>
@@ -235,7 +241,7 @@ const BarterEngine: React.FC = () => {
                           <BadgeInfo className="w-5 h-5 text-purple-400" />
                           <div className="text-slate-300 text-sm">
                             <span className="text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black block mb-1">
-                              Level match
+                              Competency Alignment
                             </span>
                             {result.skillLevelMatch}
                           </div>
@@ -249,7 +255,7 @@ const BarterEngine: React.FC = () => {
                     <div className="space-y-6 sm:space-y-8 md:space-y-10">
                       <h4 className="text-white font-black text-[10px] sm:text-xs uppercase tracking-[0.4em] flex items-center gap-3 sm:gap-4">
                         <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-500" />
-                        Implementation Milestones
+                        Settlement Pathway
                       </h4>
                       <div className="space-y-4 sm:space-y-6">
                         {(result.potentialPathways ?? []).map((path, idx) => (
@@ -265,7 +271,7 @@ const BarterEngine: React.FC = () => {
                         ))}
                         {(!result.potentialPathways || result.potentialPathways.length === 0) && (
                           <div className="p-4 sm:p-6 rounded-2xl bg-white/5 border border-white/5 text-slate-400">
-                            No milestones provided.
+                            No settlement steps provided.
                           </div>
                         )}
                       </div>
@@ -281,11 +287,11 @@ const BarterEngine: React.FC = () => {
                         <div className="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-4 relative z-10">
                           <Timer className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-400" />
                           <h4 className="text-white font-black text-[10px] sm:text-xs uppercase tracking-widest">
-                            Time Synchronization
+                            Exchange Timeframe
                           </h4>
                         </div>
                         <p className="text-slate-400 text-sm sm:text-lg leading-relaxed font-light relative z-10">
-                          {result.recommendedDuration ?? 'No duration provided'}
+                          {result.recommendedDuration ?? 'No timeframe provided'}
                         </p>
                       </div>
 
@@ -295,7 +301,7 @@ const BarterEngine: React.FC = () => {
                           <div className="flex items-center gap-3 mb-4">
                             <Sparkles className="w-5 h-5 text-cyan-400" />
                             <h5 className="text-white font-black text-[10px] sm:text-xs uppercase tracking-[0.25em]">
-                              Complementary Skills
+                              Value Amplifiers
                             </h5>
                           </div>
                           <div className="flex flex-wrap gap-2">
@@ -319,7 +325,7 @@ const BarterEngine: React.FC = () => {
                               <div className="flex items-center gap-3">
                                 <AlertTriangle className="w-5 h-5 text-pink-400" />
                                 <h5 className="text-white font-black text-[10px] sm:text-xs uppercase tracking-[0.25em]">
-                                  Risk Factors
+                                  Protocol Risks
                                 </h5>
                               </div>
                               <ul className="list-disc list-inside space-y-2">
@@ -334,7 +340,7 @@ const BarterEngine: React.FC = () => {
                           {result.impactScore && (
                             <div className="mt-2 flex items-center justify-between px-4 py-2 rounded-xl bg-white/5 border border-white/10">
                               <span className="text-slate-500 text-[10px] font-black uppercase tracking-[0.25em]">
-                                Impact Score
+                                Network Impact Score
                               </span>
                               <span className="text-cyan-300 text-sm font-bold">{result.impactScore}</span>
                             </div>
@@ -343,8 +349,9 @@ const BarterEngine: React.FC = () => {
                       )}
 
                       {/* Action */}
-                      <button className="w-full py-4 sm:py-5 md:py-6 bg-gradient-to-r from-cyan-600 to-purple-700 text-white rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm tracking-[0.2em] uppercase hover:scale-[1.02] transition-all shadow-xl shadow-cyan-900/20">
-                        Initiate Secure Link
+                      <button className="w-full py-4 sm:py-5 md:py-6 bg-gradient-to-r from-cyan-600 to-purple-700 text-white rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm tracking-[0.2em] uppercase hover:scale-[1.02] transition-all shadow-xl shadow-cyan-900/20 flex items-center justify-center gap-3">
+                        <Link2 className="w-4 h-4" />
+                        Initiate Trustless Settlement
                       </button>
                     </div>
                   </div>

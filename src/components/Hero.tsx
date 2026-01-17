@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom';
 import { ChevronRight, Play, Sparkles, Globe2 } from 'lucide-react';
 
 const Hero: React.FC = () => {
-  // 1. Add state to handle play/stop
   const [isPlaying, setIsPlaying] = useState(false);
-
-  // 2. Replace the VIDEO_ID with your actual YouTube ID after uploading
   const YOUTUBE_VIDEO_ID = "Brt3FPsZmxg"; 
 
   return (
@@ -25,40 +22,42 @@ const Hero: React.FC = () => {
         {/* Tagline */}
         <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 mb-8 sm:mb-10 rounded-full bg-white/5 border border-white/10 text-cyan-400 text-[9px] sm:text-[10px] font-black tracking-[0.35em] sm:tracking-[0.4em] uppercase backdrop-blur-xl shadow-lg">
           <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-          A Universe of Exchange
+          The Economic Layer of Human Potential
         </div>
 
         {/* Headline */}
         <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold text-white mb-6 sm:mb-10 tracking-tight font-grotesk leading-[1.05] md:leading-[0.95] uppercase">
-          Empower Growth
+          Program Value.
           <br className="hidden sm:block" />
           <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-gradient-x">
-            Beyond Money
+            Transcend Money.
           </span>
         </h1>
 
         {/* Subtext */}
         <p className="max-w-3xl mx-auto text-slate-400 text-base sm:text-lg md:text-2xl mb-12 sm:mb-16 leading-relaxed font-light px-2">
-          Welcome to <span className="text-cyan-400 font-semibold">Barterverse</span>, a decentralized ecosystem where
-          <span className="text-purple-400 font-semibold"> skill and knowledge </span> are the ultimate currency.
+          Welcome to <span className="text-cyan-400 font-semibold">Barterverse</span> — a programmable economic universe where
+          <span className="text-purple-400 font-semibold"> human skill, intelligence, time, and execution </span>
+          become tradeable assets, powered by AI valuation engines and cryptographic settlement layers.
         </p>
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 justify-center items-center mb-20 sm:mb-28">
           <Link to="/coming-soon">
-          <button className="group relative w-full sm:w-auto px-9 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-cyan-400 to-purple-600 text-white rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm tracking-[0.2em] hover:shadow-[0_0_50px_rgba(147,51,234,0.35)] transition-all overflow-hidden uppercase">
-            <span className="relative z-10 flex items-center justify-center gap-2">
-              Join the Exchange <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-            </span>
-          </button>
+            <button className="group relative w-full sm:w-auto px-9 sm:px-12 py-4 sm:py-5 bg-gradient-to-r from-cyan-400 to-purple-600 text-white rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm tracking-[0.2em] hover:shadow-[0_0_50px_rgba(147,51,234,0.35)] transition-all overflow-hidden uppercase">
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                Enter the Economy <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              </span>
+            </button>
           </Link>
           <Link to="/coming-soon">
-          <button className="w-full sm:w-auto px-9 sm:px-12 py-4 sm:py-5 bg-transparent border border-white/20 text-white rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm tracking-[0.2em] hover:bg-white/10 transition-all backdrop-blur-md flex items-center justify-center gap-3 uppercase">
-            <Globe2 className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
-            Explore Hubs
+            <button className="w-full sm:w-auto px-9 sm:px-12 py-4 sm:py-5 bg-transparent border border-white/20 text-white rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm tracking-[0.2em] hover:bg-white/10 transition-all backdrop-blur-md flex items-center justify-center gap-3 uppercase">
+              <Globe2 className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
+              Explore the Protocol
             </button>
           </Link>
         </div>
+
 
         {/* Cinematic Preview Section */}
         <div className="relative max-w-6xl mx-auto group px-2 sm:px-0">
@@ -67,7 +66,6 @@ const Hero: React.FC = () => {
           <div className="relative aspect-[16/9] sm:aspect-[21/9] rounded-xl sm:rounded-[2.5rem] overflow-hidden glass-panel p-1.5 sm:p-2 border border-white/10">
             <div className="w-full h-full rounded-lg sm:rounded-[2.2rem] bg-slate-900 overflow-hidden relative">
               
-              {/* Conditional Rendering: Show Video or Thumbnail */}
               {!isPlaying ? (
                 <>
                   <img
@@ -91,14 +89,13 @@ const Hero: React.FC = () => {
                 <iframe
                   className="w-full h-full"
                   src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&modestbranding=1&rel=0`}
-                  title="Protocol Introduction"
+                  title="Barterverse Protocol Overview"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 ></iframe>
               )}
 
-              {/* Grid Overlay (only visible when not playing for better visibility) */}
               {!isPlaying && (
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:28px_28px] opacity-10 pointer-events-none"></div>
               )}

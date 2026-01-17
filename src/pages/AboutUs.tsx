@@ -4,22 +4,22 @@ import { Linkedin, Twitter } from 'lucide-react';
 
 const AboutPage: React.FC = () => {
   const ourTeam = [
-            {
-              icon: Users,
-              title: 'Community',
-              desc: 'A universe of citizens collaborating to trade skills and knowledge for collective progress.',
-            },
-            {
-              icon: Zap,
-              title: 'Innovation',
-              desc: 'Smart solutions in EdTech, Security, Emergency Systems, AI, and PropTech.',
-            },
-            {
-              icon: Globe,
-              title: 'Impact',
-              desc: 'Solving real‑world challenges while staying rooted in the ethos of exchange.',
-            },
-  ]
+    {
+      icon: Users,
+      title: 'Networked Civilization',
+      desc: 'A planetary network of builders, operators, and institutions coordinating production, intelligence, and execution through Barter Credits (BC) — forming a post-monetary value economy.',
+    },
+    {
+      icon: Zap,
+      title: 'Protocol Innovation',
+      desc: 'We design economic infrastructure across AI, education, security, emergency systems, finance, and real-world coordination — replacing money-first systems with value-first execution.',
+    },
+    {
+      icon: Globe,
+      title: 'Civilizational Impact',
+      desc: 'Solving real-world coordination failures — from talent underutilization to crisis response — by restructuring how societies measure, route, and settle value.',
+    },
+  ];
   
   return (
     <main className="min-h-screen bg-slate-950 relative overflow-hidden px-6 py-24 mt-20">
@@ -37,16 +37,21 @@ const AboutPage: React.FC = () => {
             About Barterverse
           </div>
           <h1 className="text-4xl md:text-7xl font-bold text-white mb-8 font-grotesk tracking-tight">
-            Decentralizing Value,{' '}
+            Engineering the Future of{' '}
             <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-              Empowering Growth
+              Value Exchange
             </span>
           </h1>
           <p className="text-slate-400 max-w-2xl mx-auto text-xl font-light leading-relaxed">
-            Barterverse is a global universe dedicated to redefining how mastery and knowledge are exchanged.
-            At our core lies the Exchange Vortex and three essential actors — Initiators, Executors, and Connectors —
-            creating a self‑sustaining economy of growth. Beyond this foundation, we build smart solutions across
-            education, security, emergency response, AI innovation, and property technology.
+            Barterverse is a decentralized economic operating system designed to replace money-first coordination
+            with value-first execution. At its core is the Barter Credit (BC) protocol — a programmable unit of
+            verified contribution — and an intelligent exchange layer that matches Initiators, Executors, and
+            Connectors into self-optimizing production networks.
+            <br />
+            <br />
+            Beyond exchange, Barterverse operates across education, infrastructure, security, finance, AI, and crisis
+            response — transforming fragmented industries into interoperable economic domains governed by execution,
+            reputation, and real-world outcomes.
           </p>
         </header>
 
@@ -66,18 +71,26 @@ const AboutPage: React.FC = () => {
 
         {/* Team Section */}
         <section className="space-y-12">
-          <h2 className="text-center text-3xl font-bold text-white">Meet Our {" "}
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Team</span></h2>
+          <h2 className="text-center text-3xl font-bold text-white">
+            Protocol{' '}
+            <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+              Architects
+            </span>
+          </h2>
           <div className="grid md:grid-cols-2 gap-12">
             {/* Person 1 */}
             <div className="glass-panel p-8 rounded-3xl border border-white/10 flex flex-col items-center text-center space-y-4">
               <img
                 src="/images/elijah-abolaji.png"
-                alt="Team Member 1"
+                alt="Elijah Abolaji"
                 className="w-32 h-32 rounded-full object-cover object-top border-4 border-cyan-400"
               />
               <h3 className="text-xl font-bold text-white">Elijah Abolaji . O</h3>
-              <p className="text-slate-400 text-sm">Co-Founder & Visionary</p>
+              <p className="text-slate-400 text-sm">Co-Founder & Chief Systems Architect</p>
+              <p className="text-slate-500 text-xs max-w-sm leading-relaxed">
+                Economic systems designer and AI engineer focused on building decentralized coordination protocols,
+                autonomous intelligence economies, and post-monetary infrastructure for global-scale execution.
+              </p>
               <div className="flex gap-4 mt-2">
                 <a href="https://linkedin.com/in/elijahabolaji" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="w-5 h-5 text-slate-400 hover:text-cyan-400 transition" />
@@ -92,11 +105,16 @@ const AboutPage: React.FC = () => {
             <div className="glass-panel p-8 rounded-3xl border border-white/10 flex flex-col items-center text-center space-y-4">
               <img
                 src="/images/lawrence-o.jpg"
-                alt="Team Member 2"
+                alt="Ogbuitepu Lawrence"
                 className="w-32 h-32 rounded-full object-cover border-4 border-purple-400"
               />
               <h3 className="text-xl font-bold text-white">Ogbuitepu Lawrence . O</h3>
-              <p className="text-slate-400 text-sm">Co - Founder & C.T.O</p>
+              <p className="text-slate-400 text-sm">Co-Founder & Chief Technology Officer</p>
+              <p className="text-slate-500 text-xs max-w-sm leading-relaxed">
+                Infrastructure engineer and systems architect specializing in scalable backend systems, distributed
+                architectures, cryptographic security, and real-time coordination platforms powering the Barterverse
+                execution layer.
+              </p>
               <div className="flex gap-4 mt-2">
                 <a href="https://linkedin.com/in/c-itp-lawrence-ogbuitepu" target="_blank" rel="noopener noreferrer">
                   <Linkedin className="w-5 h-5 text-slate-400 hover:text-purple-400 transition" />

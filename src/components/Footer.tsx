@@ -9,7 +9,7 @@ import {
   Activity,
 } from 'lucide-react';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const [showTop, setShowTop] = useState(false);
@@ -42,32 +42,26 @@ const Footer: React.FC = () => {
           {/* Brand + socials + status */}
           <div className="sm:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              {/* <div className="relative">
-                <div className="absolute -inset-1 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 blur opacity-50" />
-                <div className="relative w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center border border-white/10">
-                  <Orbit className="w-6 h-6 text-white" />
+              <div className="relative">
+                <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400/20 to-purple-600/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition duration-500"></div>
+
+                <div className="relative w-12 h-12 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                  <img
+                    src="/images/barterverse-logo-transparent.png"
+                    alt="Barterverse Logo"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
-              </div> */}
-                          <div className="relative">
-              {/* Glow effect that matches logo theme */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-cyan-400/20 to-purple-600/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition duration-500"></div>
-              
-              <div className="relative w-12 h-12 flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
-                <img 
-                  src="/images/barterverse-logo-transparent.png" 
-                  alt="Barterverse Logo" 
-                  className="w-full h-full object-contain"
-                />
               </div>
-            </div>
               <span className="text-2xl font-bold tracking-[0.2em] text-white font-grotesk uppercase ml-[-15px]">
                 BARTERVERSE
               </span>
             </div>
 
             <p className="text-slate-500 max-w-sm mb-8 leading-relaxed font-light text-base">
-              A global universe dedicated to the decentralization of value. We believe the future belongs to those who
-              trade mastery for growth.
+              A planetary-scale value network enabling decentralized exchange of skills,
+              services, and assets — powered by protocol design, reputation systems, and
+              programmable trust.
             </p>
 
             {/* Status + socials */}
@@ -75,16 +69,16 @@ const Footer: React.FC = () => {
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 w-fit">
                 <Activity className={`w-4 h-4 ${protocolOnline ? 'text-cyan-400' : 'text-pink-400'}`} />
                 <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-300">
-                  {protocolOnline ? 'Protocol: Online' : 'Protocol: Offline'}
+                  {protocolOnline ? 'Network: Operational' : 'Network: Degraded'}
                 </span>
               </div>
 
               <div className="flex gap-4">
                 {[
                   { icon: Twitter, label: 'Twitter' },
-                  { icon: MessageSquare, label: 'Discord' },
+                  { icon: MessageSquare, label: 'Community' },
                   { icon: Linkedin, label: 'LinkedIn' },
-                  { icon: Github, label: 'Github' },
+                  { icon: Github, label: 'GitHub' },
                 ].map(({ icon: Icon, label }) => (
                   <a
                     key={label}
@@ -103,13 +97,12 @@ const Footer: React.FC = () => {
               className="flex flex-col sm:flex-row gap-3 max-w-md"
               onSubmit={(e) => {
                 e.preventDefault();
-                // Integrate with your newsletter API here
               }}
             >
               <input
                 type="email"
                 required
-                placeholder="Subscribe with your email"
+                placeholder="Join protocol updates & ecosystem briefings"
                 className="flex-1 bg-slate-900/70 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-4 focus:ring-cyan-500/10 transition-all text-sm"
               />
               <button className="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-purple-600 text-white text-xs font-black tracking-widest hover:scale-[1.02] transition-all">
@@ -122,33 +115,33 @@ const Footer: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:col-span-2">
             <div>
               <h5 className="text-white font-bold mb-6 font-grotesk uppercase tracking-[0.2em] text-xs relative">
-                Universe
+                Ecosystem
                 <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-cyan-400 to-purple-500" />
               </h5>
               <ul className="space-y-4 text-slate-500 text-sm font-light">
                 <li>
                   <Link to="/vortex-engine" className="hover:text-cyan-400 transition-colors">
-                    Vortex Engine
+                    Vortex Intelligence Layer
                   </Link>
                 </li>
                 <li>
                   <Link to="/knowledge-nodes" className="hover:text-cyan-400 transition-colors">
-                    Knowledge Nodes
+                    Knowledge Infrastructure
                   </Link>
                 </li>
                 <li>
                   <Link to="/barter-engine" className="hover:text-cyan-400 transition-colors">
-                    Barter Engine
+                    Barter Execution Engine
                   </Link>
                 </li>
                 <li>
                   <Link to="/citizenship" className="hover:text-cyan-400 transition-colors">
-                    Citizenship
+                    Network Citizenship
                   </Link>
                 </li>
                 <li>
                   <Link to="/governance" className="hover:text-cyan-400 transition-colors">
-                    Governance
+                    Protocol Governance
                   </Link>
                 </li>
               </ul>
@@ -156,54 +149,48 @@ const Footer: React.FC = () => {
 
             <div>
               <h5 className="text-white font-bold mb-6 font-grotesk uppercase tracking-[0.2em] text-xs relative">
-                Solutions
+                Industry Verticals
                 <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500" />
               </h5>
               <ul className="space-y-4 text-slate-500 text-sm font-light">
                 <li>
                   <button onClick={() => scrollToId('sectors')} className="hover:text-cyan-400 transition-colors">
-                    PropTech Lab
+                    PropTech Infrastructure Lab
                   </button>
                 </li>
                 <li>
                   <button onClick={() => scrollToId('sectors')} className="hover:text-cyan-400 transition-colors">
-                    EdTech Core
+                    Education Systems Core
                   </button>
                 </li>
                 <li>
-                  {/* <button onClick={() => scrollToId('sectors')} className="hover:text-cyan-400 transition-colors">
-                    FinTech Galaxy
-                  </button> */}
                   <Link to="/tax-assist" className="hover:text-cyan-400 transition-colors">
-                    Fintech - Tax Assist
+                    FinTech — Compliance Automation
                   </Link>
                 </li>
                 <li>
-                  {/* <button onClick={() => scrollToId('sectors')} className="hover:text-cyan-400 transition-colors">
-                    FinTech Galaxy
-                  </button> */}
                   <Link to="/vail" className="hover:text-cyan-400 transition-colors">
-                    Security - Vail
+                    Security — VAIL Intelligence
                   </Link>
                 </li>
                 <li>
                   <button onClick={() => scrollToId('sectors')} className="hover:text-cyan-400 transition-colors">
-                    Nexus Software
+                    Enterprise Software Nexus
                   </button>
                 </li>
                 <li>
                   <button onClick={() => scrollToId('sectors')} className="hover:text-cyan-400 transition-colors">
-                    Security Grid
+                    Defense & Risk Infrastructure
                   </button>
                 </li>
                 <li>
                   <button onClick={() => scrollToId('sectors')} className="hover:text-cyan-400 transition-colors">
-                    Emergency Systems
+                    Emergency Response Systems
                   </button>
                 </li>
                 <li>
                   <button onClick={() => scrollToId('sectors')} className="hover:text-cyan-400 transition-colors">
-                    AI Applications Hub
+                    Applied AI & Automation Hub
                   </button>
                 </li>
               </ul>
@@ -215,18 +202,18 @@ const Footer: React.FC = () => {
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
           <div className="flex items-center gap-2 text-slate-600 text-xs tracking-widest uppercase font-bold">
             <Globe className="w-4 h-4" />
-            BARTERVERSE PROTOCOL V2.5.0
+            BARTERVERSE NETWORK — PROTOCOL V2.5.0
           </div>
           <p className="text-slate-600 text-xs tracking-widest uppercase font-bold">
             © {new Date().getFullYear()} BARTERVERSE ECOSYSTEM
           </p>
           <div className="flex gap-6 text-[10px] text-slate-600 font-bold uppercase tracking-[0.2em]">
             <Link to="/privacy-system" className="hover:text-white transition-colors">
-              Privacy.sys
+              Privacy Framework
             </Link>
 
             <Link to="/exchange-protocols" className="hover:text-white transition-colors">
-              Exchange.protocols
+              Exchange Protocol Stack
             </Link>
           </div>
         </div>
