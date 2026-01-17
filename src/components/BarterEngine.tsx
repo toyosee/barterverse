@@ -15,6 +15,10 @@ import {
   Scale,
   Coins,
   Link2,
+  Network,
+  Gavel,
+  Shield,
+  Star,
 } from 'lucide-react';
 import { getBarterAdvice } from '../services/geminiService';
 import type { BarterMatchResult } from '../../types';
@@ -23,26 +27,37 @@ import type { BarterMatchResult } from '../../types';
 // Protocol Interpretation Layer
 // ============================
 
-// Helper function to interpret impact score
-const interpretImpactScore = (score: string): string => {
-  const num = parseFloat(score);
-  if (isNaN(num)) return score;
-  if (num >= 9) return "System-Level Impact";
-  if (num >= 7) return "High Network Impact";
-  if (num >= 5) return "Moderate Economic Impact";
-  if (num >= 3) return "Localized Impact";
-  return "Minimal Impact";
+const interpretImpactScore = (value?: number): string => {
+  if (value === undefined || value === null) return 'Unknown Impact';
+  if (value >= 90) return 'Transformational Impact';
+  if (value >= 75) return 'High Network Impact';
+  if (value >= 55) return 'Moderate Economic Impact';
+  if (value >= 35) return 'Localized Impact';
+  return 'Minimal Impact';
 };
 
-// Helper function to interpret Value Match Index (VMI)
-const interpretVMI = (vmi: string): string => {
-  const num = parseFloat(vmi.replace("%", ""));
-  if (isNaN(num)) return vmi;
-  if (num >= 95) return "Protocol-Perfect Alignment";
-  if (num >= 85) return "Strong Value Convergence";
-  if (num >= 70) return "Viable Alignment";
-  if (num >= 50) return "Weak Convergence";
-  return "Non-Optimal Alignment";
+const interpretVMI = (ratio?: number): string => {
+  if (ratio === undefined || ratio === null) return 'N/A';
+  if (ratio >= 0.9) return 'Protocol-Perfect Alignment';
+  if (ratio >= 0.75) return 'Strong Value Convergence';
+  if (ratio >= 0.6) return 'Viable Alignment';
+  if (ratio >= 0.45) return 'Weak Convergence';
+  return 'Non-Optimal Alignment';
+};
+
+const interpretTrustTier = (tier?: string) => {
+  switch (tier) {
+    case 'T3':
+      return { label: 'Sovereign Trust', color: 'text-cyan-400' };
+    case 'T2':
+      return { label: 'High Trust', color: 'text-purple-400' };
+    case 'T1':
+      return { label: 'Moderate Trust', color: 'text-yellow-400' };
+    case 'T0':
+      return { label: 'Zero Trust', color: 'text-pink-400' };
+    default:
+      return { label: 'Unknown', color: 'text-slate-400' };
+  }
 };
 
 const BarterEngine: React.FC = () => {
@@ -96,11 +111,11 @@ const BarterEngine: React.FC = () => {
                   </span>
                 </h2>
                 <div className="h-1 w-20 sm:w-24 bg-gradient-to-r from-cyan-400 to-purple-600 mb-6 sm:mb-8"></div>
-                  <p className="text-slate-400 text-base sm:text-lg md:text-xl font-light max-w-2xl leading-relaxed px-2">
-                    The computational core of Barterverse. The Value Exchange Engine(VEE) analyzes human capability,
-                    intent, time, impact potential, and risk vectors to algorithmically construct optimal exchanges —
-                    without requiring money, intermediaries, or centralized trust.
-                  </p>
+                <p className="text-slate-400 text-base sm:text-lg md:text-xl font-light max-w-2xl leading-relaxed px-2">
+                  The execution intelligence core of Barterverse. Vortex evaluates human capability, trust posture,
+                  settlement feasibility, reputation economics, and ecosystem impact to generate protocol-grade,
+                  moneyless exchange blueprints.
+                </p>
               </div>
 
               {/* Input grid */}
@@ -182,20 +197,20 @@ const BarterEngine: React.FC = () => {
                     {/* Left block */}
                     <div>
                       <div className="text-[10px] sm:text-[11px] font-black text-cyan-400 uppercase tracking-[0.3em] mb-2">
-                        Exchange Analysis
+                        Exchange Intelligence
                       </div>
                       <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-grotesk tracking-tight uppercase">
-                        Protocol: Barter Credit Settlement
+                        Protocol: Trust-Aware Skill Settlement
                       </h3>
                     </div>
 
                     {/* KPI pills */}
                     <div className="flex flex-wrap items-center gap-3">
-                      {/* Estimated BC value */}
+                      {/* Value tier */}
                       <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/5 border border-cyan-500/20">
                         <Coins className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 flex-shrink-0" />
                         <span className="text-cyan-400 text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider">
-                          BC Value: {result.estimatedValue ?? 'N/A'}
+                          Tier: {result.estimatedValue?.tier ?? 'N/A'}
                         </span>
                       </div>
 
@@ -203,7 +218,7 @@ const BarterEngine: React.FC = () => {
                       <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/5 border border-purple-500/20">
                         <Scale className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400 flex-shrink-0" />
                         <span className="text-purple-300 text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider">
-                          VMI: {interpretVMI(result.valueMatchIndex ?? 'N/A')}
+                          VMI: {interpretVMI(result.valueMatchIndex?.ratio)}
                         </span>
                       </div>
 
@@ -211,7 +226,19 @@ const BarterEngine: React.FC = () => {
                       <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-pink-500/5 border border-pink-500/20">
                         <TrendingUp className="w-4 h-4 text-pink-400" />
                         <span className="text-pink-300 text-xs font-black uppercase tracking-wider">
-                          {interpretImpactScore(result.impactScore)}
+                          {interpretImpactScore(result.impactScore?.value)}
+                        </span>
+                      </div>
+
+                      {/* Trust Tier */}
+                      <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
+                        <Shield className="w-4 h-4 text-cyan-300" />
+                        <span
+                          className={`text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider ${
+                            interpretTrustTier(result.trustTier).color
+                          }`}
+                        >
+                          Trust: {interpretTrustTier(result.trustTier).label}
                         </span>
                       </div>
                     </div>
@@ -223,42 +250,62 @@ const BarterEngine: React.FC = () => {
                   </p>
 
                   {/* Meta badges */}
-                  {(result.skillCategory || result.skillLevelMatch) && (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-10 sm:mb-12">
-                      {result.skillCategory && (
-                        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10">
-                          <Layers className="w-5 h-5 text-cyan-400" />
-                          <div className="text-slate-300 text-sm">
-                            <span className="text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black block mb-1">
-                              Skill Domain
-                            </span>
-                            {result.skillCategory}
-                          </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10 sm:mb-12">
+                    {result.skillDomain && (
+                      <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10">
+                        <Layers className="w-5 h-5 text-cyan-400" />
+                        <div className="text-slate-300 text-sm">
+                          <span className="text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black block mb-1">
+                            Skill Domain
+                          </span>
+                          {result.skillDomain}
                         </div>
-                      )}
-                      {result.skillLevelMatch && (
-                        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10">
-                          <BadgeInfo className="w-5 h-5 text-purple-400" />
-                          <div className="text-slate-300 text-sm">
-                            <span className="text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black block mb-1">
-                              Competency Alignment
-                            </span>
-                            {result.skillLevelMatch}
-                          </div>
+                      </div>
+                    )}
+                    {result.competencyAlignment && (
+                      <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10">
+                        <BadgeInfo className="w-5 h-5 text-purple-400" />
+                        <div className="text-slate-300 text-sm">
+                          <span className="text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black block mb-1">
+                            Competency Alignment
+                          </span>
+                          {result.competencyAlignment}
                         </div>
-                      )}
-                    </div>
-                  )}
+                      </div>
+                    )}
+                    {result.executionMode && (
+                      <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10">
+                        <Network className="w-5 h-5 text-purple-300" />
+                        <div className="text-slate-300 text-sm">
+                          <span className="text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black block mb-1">
+                            Execution Mode
+                          </span>
+                          {result.executionMode}
+                        </div>
+                      </div>
+                    )}
+                    {result.settlementMode && (
+                      <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10">
+                        <ShieldCheck className="w-5 h-5 text-cyan-300" />
+                        <div className="text-slate-300 text-sm">
+                          <span className="text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black block mb-1">
+                            Settlement Mode
+                          </span>
+                          {result.settlementMode}
+                        </div>
+                      </div>
+                    )}
+                  </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
-                    {/* Milestones */}
+                    {/* Settlement Pathways */}
                     <div className="space-y-6 sm:space-y-8 md:space-y-10">
                       <h4 className="text-white font-black text-[10px] sm:text-xs uppercase tracking-[0.4em] flex items-center gap-3 sm:gap-4">
                         <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6 text-cyan-500" />
                         Settlement Pathway
                       </h4>
                       <div className="space-y-4 sm:space-y-6">
-                        {(result.potentialPathways ?? []).map((path, idx) => (
+                        {(result.settlementPathways ?? []).map((path, idx) => (
                           <div
                             key={idx}
                             className="flex gap-4 sm:gap-6 p-4 sm:p-6 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all group/item"
@@ -269,7 +316,7 @@ const BarterEngine: React.FC = () => {
                             <p className="text-slate-400 text-sm sm:text-base leading-relaxed">{path}</p>
                           </div>
                         ))}
-                        {(!result.potentialPathways || result.potentialPathways.length === 0) && (
+                        {(!result.settlementPathways || result.settlementPathways.length === 0) && (
                           <div className="p-4 sm:p-6 rounded-2xl bg-white/5 border border-white/5 text-slate-400">
                             No settlement steps provided.
                           </div>
@@ -277,7 +324,7 @@ const BarterEngine: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Duration + action + complementary + risks/impact */}
+                    {/* Right column */}
                     <div className="space-y-6 sm:space-y-8 md:space-y-12">
                       {/* Duration */}
                       <div className="p-6 sm:p-8 md:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] bg-cyan-500/5 border border-cyan-500/10 space-y-4 sm:space-y-6 relative overflow-hidden">
@@ -294,6 +341,104 @@ const BarterEngine: React.FC = () => {
                           {result.recommendedDuration ?? 'No timeframe provided'}
                         </p>
                       </div>
+
+                      {/* Trust + leverage */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {result.trustTier && (
+                          <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3">
+                            <Shield className="w-5 h-5 text-cyan-400" />
+                            <div>
+                              <span className="block text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black mb-1">
+                                Trust Tier
+                              </span>
+                              <span className="text-slate-300 text-sm font-semibold">
+                                {interpretTrustTier(result.trustTier).label}
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                        {result.ecosystemLeverage && (
+                          <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3">
+                            <TrendingUp className="w-5 h-5 text-purple-400" />
+                            <div>
+                              <span className="block text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black mb-1">
+                                Ecosystem Leverage
+                              </span>
+                              <span className="text-slate-300 text-sm font-semibold">
+                                {result.ecosystemLeverage}
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Settlement Mode + Arbitration */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {result.settlementMode && (
+                          <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3">
+                            <ShieldCheck className="w-5 h-5 text-cyan-300" />
+                            <div>
+                              <span className="block text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black mb-1">
+                                Settlement Mode
+                              </span>
+                              <span className="text-slate-300 text-sm font-semibold">
+                                {result.settlementMode}
+                              </span>
+                            </div>
+                          </div>
+                        )}
+                        <div className="p-4 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3">
+                          <Gavel className="w-5 h-5 text-pink-400" />
+                          <div>
+                            <span className="block text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black mb-1">
+                              Arbitration
+                            </span>
+                            <span className="text-slate-300 text-sm font-semibold">
+                              {result.arbitrationRequired ? 'Required' : 'Not Required'}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Reputation Economics */}
+                      {result.reputationDelta && (
+                        <div className="p-5 sm:p-6 rounded-2xl bg-white/5 border border-white/10 space-y-4">
+                          <div className="flex items-center gap-3">
+                            <Star className="w-5 h-5 text-cyan-400" />
+                            <h5 className="text-white font-black text-[10px] sm:text-xs uppercase tracking-[0.25em]">
+                              Reputation Economics
+                            </h5>
+                          </div>
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            <div className="p-3 rounded-xl bg-slate-900/60 border border-white/10">
+                              <span className="block text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black mb-1">
+                                Provider Gain
+                              </span>
+                              <span className="text-cyan-300 font-semibold">
+                                +{result.reputationDelta.providerGain}
+                              </span>
+                            </div>
+                            <div className="p-3 rounded-xl bg-slate-900/60 border border-white/10">
+                              <span className="block text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black mb-1">
+                                Requester Gain
+                              </span>
+                              <span className="text-purple-300 font-semibold">
+                                +{result.reputationDelta.requesterGain}
+                              </span>
+                            </div>
+                            {result.reputationDelta.decayRisk !== undefined && result.reputationDelta.decayRisk !== null && (
+                              <div className="p-3 rounded-xl bg-slate-900/60 border border-white/10">
+                                <span className="block text-slate-500 uppercase tracking-[0.2em] text-[10px] font-black mb-1">
+                                  Decay Risk
+                                </span>
+                                <span className="text-pink-300 font-semibold">
+                                  {result.reputationDelta.decayRisk}%
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      )}
 
                       {/* Complementary skills */}
                       {result.complementarySkills && result.complementarySkills.length > 0 && (
@@ -317,34 +462,43 @@ const BarterEngine: React.FC = () => {
                         </div>
                       )}
 
-                      {/* Risks + impact */}
-                      {(result.riskFactors?.length || result.impactScore) && (
+                      {/* Risks */}
+                      {result.riskProfile && result.riskProfile.length > 0 && (
                         <div className="p-5 sm:p-6 rounded-2xl bg-white/5 border border-white/10 space-y-4">
-                          {result.riskFactors && result.riskFactors.length > 0 && (
-                            <>
-                              <div className="flex items-center gap-3">
-                                <AlertTriangle className="w-5 h-5 text-pink-400" />
-                                <h5 className="text-white font-black text-[10px] sm:text-xs uppercase tracking-[0.25em]">
-                                  Protocol Risks
-                                </h5>
-                              </div>
-                              <ul className="list-disc list-inside space-y-2">
-                                {result.riskFactors.map((risk, idx) => (
-                                  <li key={idx} className="text-slate-400 text-sm">
-                                    {risk}
-                                  </li>
-                                ))}
-                              </ul>
-                            </>
-                          )}
-                          {result.impactScore && (
-                            <div className="mt-2 flex items-center justify-between px-4 py-2 rounded-xl bg-white/5 border border-white/10">
-                              <span className="text-slate-500 text-[10px] font-black uppercase tracking-[0.25em]">
-                                Network Impact Score
-                              </span>
-                              <span className="text-cyan-300 text-sm font-bold">{result.impactScore}</span>
-                            </div>
-                          )}
+                          <div className="flex items-center gap-3">
+                            <AlertTriangle className="w-5 h-5 text-pink-400" />
+                            <h5 className="text-white font-black text-[10px] sm:text-xs uppercase tracking-[0.25em]">
+                              Protocol Risks
+                            </h5>
+                          </div>
+                          <ul className="space-y-3">
+                            {result.riskProfile.map((risk, idx) => (
+                              <li
+                                key={idx}
+                                className="p-3 rounded-xl bg-slate-900/60 border border-white/10"
+                              >
+                                <div className="flex items-center justify-between mb-1">
+                                  <span className="text-slate-300 text-sm font-semibold">
+                                    {risk.risk}
+                                  </span>
+                                  <span
+                                    className={`text-[10px] font-black uppercase tracking-widest ${
+                                      risk.severity === 'High'
+                                        ? 'text-pink-400'
+                                        : risk.severity === 'Medium'
+                                        ? 'text-yellow-400'
+                                        : 'text-cyan-400'
+                                    }`}
+                                  >
+                                    {risk.severity}
+                                  </span>
+                                </div>
+                                <p className="text-slate-500 text-xs leading-relaxed">
+                                  Mitigation: {risk.mitigation}
+                                </p>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       )}
 
