@@ -174,6 +174,11 @@ const Footer: React.FC = () => {
                   </Link>
                 </li>
                 <li>
+                  <a href="https://gototely.com/" className="hover:text-cyan-400 transition-colors" target="_blank">
+                    Totely - AI powered eCommerce
+                  </a>
+                </li>
+                <li>
                   <button onClick={() => scrollToId('sectors')} className="hover:text-cyan-400 transition-colors">
                     Enterprise Software Nexus
                   </button>
