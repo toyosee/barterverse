@@ -210,7 +210,7 @@ const Footer: React.FC = () => {
             BARTERVERSE NETWORK — PROTOCOL V2.5.0
           </div>
           <p className="text-slate-600 text-xs tracking-widest uppercase font-bold">
-            © {new Date().getFullYear()} BARTERVERSE ECOSYSTEM
+            © {new Date().getFullYear()} 2026 Barterverse Technologies Ltd, RC 9346924, Abuja, Nigeria
           </p>
           <div className="flex gap-6 text-[10px] text-slate-600 font-bold uppercase tracking-[0.2em]">
             <Link to="/privacy-system" className="hover:text-white transition-colors">
