@@ -7,6 +7,7 @@ import Hero from './components/Hero';
 import PersonasSection from './components/PersonasSection';
 import SectorsSection from './components/SectorsSection';
 import BarterEngine from './components/BarterEngine';
+import ProductsSection from './components/Products';
 
 import AboutPage from './pages/AboutUs';
 import ContactPage from './pages/ContactUs';
@@ -19,6 +20,7 @@ import PrivacySystemPage from './pages/PrivacySystemPage'
 import ExchangeProtocolsPage from './pages/ExchangeProtoclsPage';
 import TaxAssistPage from './pages/TaxAssist';
 import VailLandingPage from './pages/Vail';
+import ProductsPage from './pages/ProductsPage';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import ComingSoon from './pages/ComingSoon';
@@ -29,6 +31,9 @@ const LandingPage = () => (
   <>
     <section id="vision">
       <Hero />
+    </section>
+    <section id="products">
+      <ProductsSection />
     </section>
     <section id="people">
       <PersonasSection />
@@ -132,6 +137,15 @@ const App: React.FC = () => (
         element={
           <Layout>
             <TaxAssistPage />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/products"
+        element={
+          <Layout>
+            <ProductsPage />
           </Layout>
         }
       />
