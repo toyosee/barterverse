@@ -97,6 +97,9 @@ const Navbar: React.FC = () => {
               )}
             </div>
 
+            <Link to="/products" className="text-[10px] font-black text-slate-500 hover:text-white transition-all uppercase tracking-[0.3em]">
+              Products
+            </Link>
             <Link to="/about" className="text-[10px] font-black text-slate-500 hover:text-white transition-all uppercase tracking-[0.3em]">
               Network
             </Link>
@@ -149,6 +152,9 @@ const Navbar: React.FC = () => {
             ))}
           </div>
 
+          <Link to="/products" onClick={() => setMobileMenuOpen(false)} className="w-full text-center text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]">
+            Products
+          </Link>
           <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="w-full text-center text-xs font-black text-slate-400 hover:text-white transition-all uppercase tracking-[0.3em]">
             Network
           </Link>
